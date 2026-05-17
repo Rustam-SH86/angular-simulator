@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as training from './training';
 
 @Component({
   selector: 'app-root',
@@ -9,3 +10,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
 }
+
