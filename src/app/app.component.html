@@ -1,80 +1,194 @@
-<section class="hero">
-  <header class="header">
-    <div class="navigator-section">
-      <nav class="navigator">
-        <div class="logo">
-          <img class="logo-image" src="/icons/logo.png" alt="РУМТИБЕТ" />
-
-          <span class="logo-title">
-            {{ companyName }}
-          </span>
-        </div>
-
-        <ul class="navigator-items">
-          <li><a href="#">Главная</a></li>
-          <li><a href="#">Про гида</a></li>
-          <li><a href="#">Программа тура</a></li>
-          <li><a href="#">Стоимость</a></li>
-          <li><a href="#">Блог</a></li>
-          <li><a href="#">Контакты</a></li>
-        </ul>
-
-        <button class="consultation-button consultation-button-text-color" id="consultation-button">
-          Консультация
-        </button>
-      </nav>
+<body class="body-section">
+  @if (isLoading) {
+    <div class="loader-container">
+      <div class="overlay"></div>
+      <div class="loader"></div>
     </div>
-  </header>
+  }
 
-  <div class="hero-content">
-    <h1 class="title">
-      Насладись прогулкой в горах<br />
-      с командой единомышленников
-    </h1>
-    <div class="order-footer">
-      <form class="tur-search-form">
-        <div class="tur-param-field">
-          <div class="select-wrapper">
-            <select class="tur-param-control" name="city" id="city-select">
-              <option selected disabled>Локация для тура</option>
-              <option>Джомолунгма</option>
-              <option>Эльбрус</option>
-              <option>Килиманджаро</option>
-            </select>
-            <img class="select-icon" src="/icons/select.png" alt="" />
-          </div>
-          <p>выберите из списка</p>
-        </div>
+  <section class="hero">
+    <header class="header">
+      <div class="navigator-section">
+        <nav class="navigator">
+          <div class="logo">
+            <img class="logo-image" src="/icons/logo.png" alt="РУМТИБЕТ" />
 
-        <div class="tur-param-field">
-          <div class="date-wrapper">
-            <input
-              class="tur-param-control"
-              placeholder="Дата похода"
-              [type]="isDateType ? 'date' : 'text'"
-              (focus)="changeToDate()"
-              (blur)="changeToText($event)"
-            />
-            <img class="calendar-icon" src="/icons/calendar.png" alt="calendar" />
+            <span class="logo-title">
+              {{ companyName }}
+            </span>
           </div>
 
-          <p>укажите дату</p>
-        </div>
+          <ul class="navigator-items">
+            <li><a href="#">Главная</a></li>
+            <li><a href="#">Про гида</a></li>
+            <li><a href="#">Программа тура</a></li>
+            <li><a href="#">Стоимость</a></li>
+            <li><a href="#">Блог</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
 
-        <div class="tur-param-field">
-          <div class="select-wrapper">
-            <select class="tur-param-control" name="participant" id="participants">
-              <option selected disabled>Участники</option>
-              <option>экспедиционная группа</option>
-              <option>отряд бойскаутов</option>
-            </select>
-            <img class="select-icon" src="/icons/select.png" alt="" />
+          <button
+            class="consultation-button consultation-button-text-color"
+            id="consultation-button"
+          >
+            Консультация
+          </button>
+          <div class="time-clicker-buttons">
+            <button class="show-clicker-or-date" (click)="changeNameOfButton()">
+              {{ showDate ? 'Показать кликер' : 'Показать дату' }}
+            </button>
+
+            @if (showDate) {
+              <div class="time-field">{{ currentTime }}</div>
+            } @else {
+              <div class="clicker-field">
+                <button class="minus-button" (click)="subtractNumber()">-</button>
+                <span class="displayedNumber">{{ displayedNumber }}</span>
+                <button class="plus-button" (click)="addNumber()">+</button>
+              </div>
+            }
           </div>
-          <p>выберите из списка</p>
-        </div>
+        </nav>
+      </div>
+    </header>
 
-        <button class="search-tur-button" type="submit">Найти программу</button>
-      </form>
+    <div class="hero-content">
+      <h1 class="title">
+        Насладись прогулкой в горах<br />
+        с командой единомышленников
+      </h1>
+      <div class="order-footer">
+        <form class="tur-search-form">
+          <div class="tur-param-field">
+            <div class="select-wrapper">
+              <select
+                class="tur-param-control"
+                name="city"
+                id="city-select"
+                [(ngModel)]="selectedLocation"
+              >
+                <option value="">Локация для тура</option>
+                <option>Джомолунгма</option>
+                <option>Эльбрус</option>
+                <option>Килиманджаро</option>
+              </select>
+              <img class="select-icon" src="/icons/select.png" alt="" />
+            </div>
+            <p>выберите из списка</p>
+          </div>
+
+          <div class="tur-param-field">
+            <div class="date-wrapper">
+              <input
+                class="tur-param-control"
+                name="date"
+                [(ngModel)]="selectedDate"
+                placeholder="Дата похода"
+                [type]="isDateType ? 'date' : 'text'"
+                (focus)="changeToDate()"
+                (blur)="changeToText($event)"
+              />
+              <img class="calendar-icon" src="/icons/calendar.png" alt="calendar" />
+            </div>
+
+            <p>укажите дату</p>
+          </div>
+
+          <div class="tur-param-field">
+            <div class="select-wrapper">
+              <select
+                class="tur-param-control"
+                name="participant"
+                id="participants"
+                [(ngModel)]="selectedParticipants"
+              >
+                <option value="">Участники</option>
+                <option>экспедиционная группа</option>
+                <option>отряд бойскаутов</option>
+              </select>
+              <img class="select-icon" src="/icons/select.png" alt="" />
+            </div>
+            <p>выберите из списка</p>
+          </div>
+
+          <button
+            class="search-tur-button button"
+            type="submit"
+            [disabled]="!selectedLocation || !selectedDate || !selectedParticipants"
+          >
+            Найти программу
+          </button>
+        </form>
+      </div>
+      <div class="live-input">
+        <input class="text-input-field" placeholder="введите текст" [(ngModel)]="inputText" />
+        <p class="displayed-text">{{ inputText }}</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class="about-tur">
+    <div class="images-block">
+      <img
+        class="about-tur_img about-tour__image--back"
+        src="/image/about-tur-rock_img.svg"
+        alt="rock image"
+      />
+      <div class="village-image">
+        <img
+          class="about-tur_img about-tour__image--front"
+          src="/image/about-tur-village_img.svg"
+          alt="village image"
+        />
+        <div class="play-button">
+          <img class="rectangle_icon" src="/icons/about-tur-rectangle_icon.svg" />
+          <img class="play_icon" src="/icons/about-tur-play_icon.svg" />
+        </div>
+      </div>
+    </div>
+    <div class="about-tour__content">
+      <p class="about-tur_subtitle section-subtitle">о нашем походе</p>
+      <h2 class="about-tur_title section-title">
+        Исследуйте все горные массивы мира вместе с нами
+      </h2>
+      <p class="about-tur_description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+        Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
+        поисками в классической латинской литературе.
+      </p>
+      <button class="programm-of-tur-button button">Программа тура</button>
+    </div>
+  </section>
+  <section class="tur-description">
+    <div class="tur-description__content">
+      <p class="tur-description_subtitle section-subtitle">о нашем походе</p>
+      <h2 class="tur-description_title section-title">Лучшие программы для тебя</h2>
+      <p class="tur-description_text">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </p>
+      <div class="advantages-list">
+        @for (item of advantages; track $index) {
+          <div class="advantages">
+            <div class="advantages-icons">
+              <img class="back-adv-icon" [src]="item.bg_icon" />
+              <img class="front-adv-icon" [src]="item.icon" />
+            </div>
+            <div class="advantages-content">
+              <h3 class="advantages-title">{{ item.title }}</h3>
+              <p class="advantages-text">{{ item.text }}</p>
+            </div>
+          </div>
+        }
+        <button class="price-button button">Стоимость программы</button>
+      </div>
+    </div>
+    <div class="tur-description_images">
+      @for (item of programImages; track $index) {
+        <div class="tur-description-images">
+          <img class="program-image" [src]="item.src" [alt]="item.alt" />
+        </div>
+      }
+    </div>
+  </section>
+</body>
