@@ -70,11 +70,11 @@ protected readonly programImages = [
     }
   };
 
-  protected addNumber() {
+  protected addNumber(): void {
     this.displayedNumber ++;
   };
 
-  protected subtractNumber() {
+  protected subtractNumber(): void {
     if(this.displayedNumber > 0) {
       this.displayedNumber --;
     };
@@ -82,10 +82,9 @@ protected readonly programImages = [
     
   protected changeNameOfButton(): void {
     this.showDate = !this.showDate;
-    
   };
   
-  stopLoader() {
+  stopLoader(): void {
     setTimeout(() => {
       this.isLoading = false;
     },2000)
