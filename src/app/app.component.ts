@@ -77,6 +77,8 @@ protected readonly programImages = [
   protected subtractNumber(): void {
     if(this.displayedNumber > 0) {
       this.displayedNumber --;
+    }else {
+      
     };
   };
     

@@ -42,7 +42,7 @@
               <div class="time-field">{{ currentTime }}</div>
             } @else {
               <div class="clicker-field">
-                <button class="minus-button" (click)="subtractNumber()">-</button>
+                <button class="minus-button" (click)="subtractNumber()" [disabled]="displayedNumber === 0">-</button>
                 <span class="displayedNumber">{{ displayedNumber }}</span>
                 <button class="plus-button" (click)="addNumber()">+</button>
               </div>
