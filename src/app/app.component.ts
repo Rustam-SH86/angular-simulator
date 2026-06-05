@@ -1,66 +1,94 @@
 import { Component } from '@angular/core';
  import { Colors } from '../enums/Color'; 
  import { Collection } from './collection'; 
+ import { FormsModule } from '@angular/forms';
  
  
  @Component({ 
   selector: 'app-root', 
-  imports: [], 
+  imports: [FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss', })
 
 
 export class AppComponent {
-  companyName = 'РУМТИБЕТ';
-  isDateType = false;
+  protected readonly companyName = 'РУМТИБЕТ';
+  protected showDate = true;
+  protected currentTime = '';
+  protected displayedNumber = 0;
+  protected isDateType = false;
+  protected selectedLocation = '';
+  protected selectedDate = '';
+  protected selectedParticipants = '';
+  protected inputText = '';
+  protected isLoading = true;
 
-  colors = ['red', 'blue', 'green'];
-
-  users = [
-    { id: 1, name: 'Rustam' },
-    { id: 2, name: 'Amin' }
+  protected readonly advantages = [
+    {
+      bg_icon: "/icons/advantages/background_people.svg",
+      icon:"/icons/advantages/people.svg", 
+      title: "Опытный гид", 
+      text: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации."
+    },
+    {
+      bg_icon: "/icons/advantages/background_shield.svg",
+      icon:"/icons/advantages/shield.svg", 
+      title: "Безопасный поход", 
+      text: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации."
+    },
+    {
+      bg_icon: "/icons/advantages/background_price.svg",
+      icon:"/icons/advantages/price.svg", 
+      title: "Лояльные цены", 
+      text: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации."
+    }
   ];
 
-  colorsCollection = new Collection<string>(this.colors);
-
-  usersCollection = new Collection<{ id: number; name: string }>(this.users);
+protected readonly programImages = [
+  { src: '/image/programs/lake.svg', alt: 'lake' },
+  { src: '/image/programs/man.svg', alt: 'man' },
+  { src: '/image/programs/snowmobile.svg', alt: 'snowmobile' },
+  { src: '/image/programs/mountains.svg', alt: 'mountains' },
+];
 
   constructor() {
-    this.saveLastVisitDate();
-    this.saveVisitsCount();
+    this.stopLoader();
+    setInterval(()=>{
+      this.currentTime = new Date().toLocaleString();
+    },1000);
+  };
 
-    console.log(this.colorsCollection.getAll());
-    console.log(this.usersCollection.getOne(0));
-
-    this.colorsCollection.replace(1, 'black');
-    this.usersCollection.delete(1);
-  }
-
-  changeToDate() {
+  protected changeToDate() {
     this.isDateType = true;
-  }
+  };
 
-  changeToText(event: Event) {
+  protected changeToText(event: Event) {
     const input = event.target as HTMLInputElement;
 
     if (!input.value) {
       this.isDateType = false;
     }
-  }
+  };
 
-  checkMainColors(color: string): boolean {
-    return Object.values(Colors).includes(color.toLowerCase() as Colors);
-  }
+  protected addNumber(): void {
+    this.displayedNumber ++;
+  };
 
-  saveLastVisitDate(): void {
-    const currentDate = new Date().toLocaleString();
-    localStorage.setItem('lastVisitDate', currentDate);
-  }
-
-  saveVisitsCount(): void {
-    const visits = localStorage.getItem('visitsCount');
-    let currentVisits = visits ? Number(visits) : 0;
-    currentVisits++;
-    localStorage.setItem('visitsCount', currentVisits.toString());
-  }
-}
+  protected subtractNumber(): void {
+    if(this.displayedNumber > 0) {
+      this.displayedNumber --;
+    }else {
+      
+    };
+  };
+    
+  protected changeNameOfButton(): void {
+    this.showDate = !this.showDate;
+  };
+  
+  stopLoader(): void {
+    setTimeout(() => {
+      this.isLoading = false;
+    },2000)
+  };
+};

@@ -9,6 +9,16 @@ ul {
   list-style: none;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
+:root {
+  --dark-green: #1A3E3E;
+  --white: #FFFFFF;
+  --dark-blue: #18121E;
+  --light-gray: #F3F5F4;
+}
+

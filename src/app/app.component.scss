@@ -1,3 +1,39 @@
+.body-section {
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.loader {
+  z-index: 1000;
+  position: fixed;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .hero {
   background-image: url('/background_image/backgroun-img.jpg');
   background-color: gray;
@@ -17,6 +53,48 @@
   background-color: #18121e80;
 }
 
+.time-field {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  background-color: #fdfdfd;
+  border-radius: 4px;
+  width: 170px;
+}
+
+.clicker-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fdfdfd;
+  width: 170px;
+}
+
+.show-clicker-or-date {
+  width: 130px;
+}
+
+.time-clicker-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.displayedNumber {
+  border-radius: 4px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: black;
+}
+
+.minus-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -25,17 +103,15 @@
 
 .logo-title {
   color: white;
-
   font-family: 'Nunito Sans';
   font-weight: 700;
   font-size: 16px;
-
   line-height: 100%;
   letter-spacing: 0.4em;
 }
 
 .navigator-section {
-  width: 1180px;
+  width: 1470px;
   height: 60px;
 }
 
@@ -65,6 +141,7 @@
 
 .consultation-button-text-color {
   color: #1a3e3e;
+  cursor: pointer;
 }
 
 .title {
@@ -79,6 +156,24 @@
   flex-direction: column;
   max-width: 1180px;
   margin: 260px auto 0;
+}
+
+.live-input {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.text-input-field {
+  text-align: center;
+  border-radius: 4px;
+  width: 170px;
+  height: 51px;
+}
+
+.displayed-text {
+  color: white;
+  font-size: 18px;
 }
 
 .order-footer {
@@ -115,7 +210,6 @@
 .tur-param-control {
   width: 250px;
   height: 52px;
-  box-sizing: border-box;
 
   padding: 0 16px;
 
@@ -165,23 +259,34 @@
   pointer-events: none;
 }
 
-.search-tur-button {
-  width: 213px;
+.button {
   height: 52px;
-
-  padding: 16px 36px;
-
-  border: none;
-  border-radius: 4px;
-
   background-color: #1a3e3e;
-  color: white;
-
+  border-radius: 4px;
+  color: #fdfdfd;
   font-family: 'Nunito Sans';
   font-weight: 700;
   font-size: 16px;
-
+  padding: 16px 36px;
+  border: none;
   cursor: pointer;
+}
+
+.search-tur-button {
+  width: 213px;
+}
+
+.search-tur-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.programm-of-tur-button {
+  width: 200px;
+}
+
+.price-button {
+  width: 237px;
 }
 
 .select-icon,
@@ -192,4 +297,181 @@
 
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.section-title {
+  width: 580px;
+  height: 76px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.section-subtitle {
+  color: #f2be22;
+  width: 182px;
+  height: 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.about-tur {
+  margin: 80px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+
+  width: 1180px;
+  height: 526px;
+}
+
+.about-tour__content {
+  width: 580px;
+  height: 162px;
+  display: flex;
+  flex-direction: column;
+}
+
+.images-block {
+  position: relative;
+  width: 480px;
+  height: 540px;
+}
+
+.about-tur_img {
+  width: 350px;
+  height: 400px;
+  display: block;
+}
+
+.about-tour__image--back {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.village-image {
+  position: absolute;
+  top: 140px;
+  left: 130px;
+
+  width: 350px;
+  height: 400px;
+}
+
+.about-tour__image--front {
+  position: static;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle_icon {
+  width: 50px;
+  height: 50px;
+}
+
+.play_icon {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+
+.tur-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1180px;
+  margin: 80px auto;
+  align-items: center;
+}
+
+.tur-description__content {
+  display: flex;
+  flex-direction: column;
+  width: 580px;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.advantages {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.advantages:hover {
+  transform: translateX(8px);
+}
+
+.advantages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.advantages-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.advantages-title {
+  margin: 0;
+}
+
+.advantages-text {
+  margin: 4px 0 0;
+}
+
+.advantages-icons {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.front-adv-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.back-adv-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tur-description_images {
+  width: 510px;
+  height: 510px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.program-image {
+  transition: transform 0.3s ease;
+  width: 250px;
+  height: 250px;
+}
+
+.program-image:hover {
+  transform: scale(1.05);
 }
