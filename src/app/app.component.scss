@@ -308,7 +308,7 @@
 
 .section-subtitle {
   color: #f2be22;
-  width: 182px;
+  //width: 182px;
   height: 20px;
   font-size: 24px;
   font-weight: 400;
@@ -474,4 +474,253 @@
 
 .program-image:hover {
   transform: scale(1.05);
+}
+
+.popular-destinations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 55px;
+}
+
+.destination-title-section {
+  width: 580px;
+  margin: 0 auto;
+
+  .section-subtitle,
+  .section-title {
+    text-align: center;
+  }
+}
+
+.popular-destinations_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1180px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.popular-destinations-card {
+  position: relative;
+  width: 380px;
+  height: 500px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.destination-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.rating {
+  position: absolute;
+  display: flex;
+  top: 10px;
+  right: 0;
+  padding: 8px 16px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+
+  border-radius: 6px;
+  font-size: 20px;
+  gap: 10px;
+}
+
+.destination-image_footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 32px;
+  color: white;
+}
+
+.image_footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.title-section {
+  position: relative;
+}
+
+.destination-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.destination-subtitle {
+  margin: 0;
+}
+
+.destination-price {
+  position: relative;
+  font-weight: bold;
+  padding: 8px 16px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.travel-blog {
+  padding-top: 40px;
+  background-color: #f3f5f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.travel-blog-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1180px;
+  gap: 20px;
+}
+
+.travel-blog-card {
+  width: 580px;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 20px;
+}
+
+.travel-blog-image {
+  width: 230px;
+  height: 280px;
+  border-radius: 6px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.travel-blog-description {
+  display: flex;
+  flex-direction: column;
+  width: 294px;
+  height: 280px;
+}
+
+.travel-blog-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 294px;
+
+  .date {
+    color: #f2be22;
+  }
+}
+
+.travel-blog-button {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.dastinations-rating-button {
+  margin-bottom: 80px;
+}
+
+.messages-container {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-message-container {
+  position: static;
+  padding: 5px auto;
+  z-index: 900;
+  top: 165px;
+  right: 25px;
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  height: 70px;
+  border-radius: 10px;
+  border: 1px;
+  opacity: 1;
+  gap: 20px;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.delete-infoicon {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.delete-infoicon-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.delete-infoicon-image {
+  width: 24px;
+  height: 24px;
+}
+
+.envelop-image-container {
+  margin: 15px 0 15px 15px;
+  flex-shrink: 0;
+}
+
+.message-type {
+  font-weight: 716;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #f3f3f3;
+  margin: 0;
+}
+
+.message-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #f3f3f3;
+  margin: 0;
+}
+
+.infoicon-image {
+  width: 40px;
+  height: 40px;
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

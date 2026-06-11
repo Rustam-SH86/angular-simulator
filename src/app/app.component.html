@@ -1,10 +1,43 @@
 <body class="body-section">
-  @if (isLoading) {
+  @if (false) {
     <div class="loader-container">
       <div class="overlay"></div>
       <div class="loader"></div>
     </div>
   }
+
+  <div class="messages-container">
+    @for (message of messageService.openedMessages; track message.id) {
+      <ng-container
+        *ngTemplateOutlet="messageTemplate; context: { $implicit: message }"
+      ></ng-container>
+    }
+  </div>
+
+  <ng-template #messageTemplate let-message>
+    <div class="info-message-container">
+      <div class="envelop-image-container">
+        <img class="infoicon-image" src="/image/info_message/infoicon.svg" alt="infoicon" />
+      </div>
+
+      <div class="message-content">
+        <h2 class="message-type">{{ message.type }}</h2>
+        <p class="message-text">{{ message.text }}</p>
+      </div>
+
+      <button
+        class="delete-infoicon-button"
+        type="button"
+        (click)="messageService.closeMessage(message.id)"
+      >
+        <img
+          class="delete-infoicon-image"
+          src="/image/info_message/delete-infoicon.svg"
+          alt="delete infoicon"
+        />
+      </button>
+    </div>
+  </ng-template>
 
   <section class="hero">
     <header class="header">
@@ -42,7 +75,13 @@
               <div class="time-field">{{ currentTime }}</div>
             } @else {
               <div class="clicker-field">
-                <button class="minus-button" (click)="subtractNumber()" [disabled]="displayedNumber === 0">-</button>
+                <button
+                  class="minus-button"
+                  (click)="subtractNumber()"
+                  [disabled]="displayedNumber === 0"
+                >
+                  -
+                </button>
                 <span class="displayedNumber">{{ displayedNumber }}</span>
                 <button class="plus-button" (click)="addNumber()">+</button>
               </div>
@@ -156,7 +195,12 @@
         Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
         поисками в классической латинской литературе.
       </p>
-      <button class="programm-of-tur-button button">Программа тура</button>
+      <button
+        class="programm-of-tur-button button"
+        (click)="messageService.addMessage(MessageType.Success, 'Направления получены')"
+      >
+        Программа тура
+      </button>
     </div>
   </section>
   <section class="tur-description">
@@ -180,7 +224,12 @@
             </div>
           </div>
         }
-        <button class="price-button button">Стоимость программы</button>
+        <button
+          class="price-button button"
+          (click)="messageService.addMessage(MessageType.Info, 'Стоимость отправлена на почту')"
+        >
+          Стоимость программы
+        </button>
       </div>
     </div>
     <div class="tur-description_images">
@@ -190,5 +239,63 @@
         </div>
       }
     </div>
+  </section>
+  <section class="popular-destinations">
+    <div class="destination-title-section">
+      <p class="tur-description_subtitle section-subtitle">по версии отдыхающих</p>
+      <h2 class="tur-description_title section-title">Популярные направления</h2>
+    </div>
+    <div class="popular-destinations_content">
+      @for (item of destinations; track $index) {
+        <div class="popular-destinations-card">
+          <img class="destination-image" [src]="item.image" />
+          <div class="rating">
+            <img class="rating-star-icon" [src]="item.ratingIcon" />
+            <span class="rating-value">{{ item.ratingValue }}</span>
+          </div>
+          <div class="destination-image_footer">
+            <img class="image_footer" [src]="item.imageFooter" />
+            <div class="title-section">
+              <h2 class="destination-title">{{ item.title }}</h2>
+              <p class="destination-subtitle">{{ item.subtitle }}</p>
+            </div>
+            <div class="destination-price">{{ item.price }}</div>
+          </div>
+        </div>
+      }
+    </div>
+    <button
+      class="dastinations-rating-button button"
+      (click)="messageService.addMessage(MessageType.Warn, 'Программа недоступна')"
+    >
+      Рейтинг направлений
+    </button>
+  </section>
+  <section class="travel-blog">
+    <div class="destination-title-section">
+      <p class="tur-description_subtitle section-subtitle">делимся впечатлениями</p>
+      <h2 class="tur-description_title section-title">Блог о путешествиях</h2>
+    </div>
+    <div class="travel-blog-content">
+      @for (item of travelBlog; track $index) {
+        <div class="travel-blog-card">
+          <img class="travel-blog-image" [src]="item.image" />
+          <div class="travel-blog-description">
+            <h2 class="travel-blog-title">{{ item.title }}</h2>
+            <p class="travel-blog-description">{{ item.description }}</p>
+            <div class="travel-blog-footer">
+              <p class="date">{{ item.date }}</p>
+              <a href="" class="read-article">{{ item.readArticle }}</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <button
+      class="travel-blog-button button"
+      (click)="messageService.addMessage(MessageType.Error, 'Материалы недоступны')"
+    >
+      Другие материалы
+    </button>
   </section>
 </body>
