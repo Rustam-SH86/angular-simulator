@@ -10,7 +10,7 @@ export class LocalStorageService {
 
   getValue<T>(item: string): T | null {
     const value = localStorage.getItem(item);
-    return value ? JSON.parse(item) : null;
+    return value ? JSON.parse(value) : null;
   }
 
   deleteValue(item: string): void {

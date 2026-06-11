@@ -120,6 +120,7 @@ export class AppComponent {
   ];
 
   constructor() {
+    this.saveVisitsCountAndDate();
     this.stopLoader();
     setInterval(() => {
       this.currentTime = new Date().toLocaleString();
@@ -151,6 +152,13 @@ export class AppComponent {
 
   protected changeNameOfButton(): void {
     this.showDate = !this.showDate;
+  }
+
+  saveVisitsCountAndDate(): void {
+    let currentVisit = this.localstorageService.getValue<number>('visitsCount') ?? 0;
+    currentVisit++;
+    this.localstorageService.setValue('visitsCount', currentVisit);
+    this.localstorageService.setValue('lastVisitDate', new Date().toLocaleString());
   }
 
   stopLoader(): void {
