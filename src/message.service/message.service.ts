@@ -8,7 +8,12 @@ import { Message } from './message.interfaces';
 
 export class MessageService {
   private currentId = 0;
-  public openedMessages: Message[] = [];
+  private openedMessages: Message[] = [];
+
+  get messages(): readonly Message[] {
+    return this.openedMessages;
+
+  }
 
   public addMessage(type: MessageType, text: string): void {
     const message: Message = {

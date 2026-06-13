@@ -7,7 +7,7 @@
   }
 
   <div class="messages-container">
-    @for (message of messageService.openedMessages; track message.id) {
+    @for (message of messageService.messages; track message.id) {
       <ng-container
         *ngTemplateOutlet="messageTemplate; context: { $implicit: message }"
       ></ng-container>
