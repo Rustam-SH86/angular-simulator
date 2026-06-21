@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="logo">
+    <img class="logo-image" src="/icons/logo.png" alt="РУМТИБЕТ" />
+
+    <span class="logo-title">
+      {{ companyName }}
+    </span>
+  </div>
+
+  <nav class="navigator">
+    <ul class="navigator-items">
+      @for (item of headerItems; track $index) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.exact}"
+          >
+            {{ item.name }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <div class="header-spacer"></div>
+</header>

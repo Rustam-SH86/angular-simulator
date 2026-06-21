@@ -5,17 +5,14 @@ import { Message } from './message.interfaces';
 @Injectable({
   providedIn: 'root',
 })
-
 export class MessageService {
   private currentId = 0;
   private openedMessages: Message[] = [];
-
   get messages(): readonly Message[] {
     return this.openedMessages;
-
   }
 
-  public addMessage(type: MessageType, text: string): void {
+  private addMessage(type: MessageType, text: string): void {
     const message: Message = {
       id: ++this.currentId,
       type,
@@ -30,5 +27,21 @@ export class MessageService {
 
   public closeMessage(id: number): void {
     this.openedMessages = this.openedMessages.filter((message) => message.id !== id);
+  }
+
+  public showWarn(text: string): void {
+    this.addMessage(MessageType.Warn, text);
+  }
+
+  public showError(text: string): void {
+    this.addMessage(MessageType.Error, text);
+  }
+
+  public showSuccess(text: string): void {
+    this.addMessage(MessageType.Success, text);
+  }
+
+  public showInfo(text: string): void {
+    this.addMessage(MessageType.Info, text);
   }
 }

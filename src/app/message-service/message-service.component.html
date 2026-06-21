@@ -1,0 +1,32 @@
+<div class="messages-container">
+  @for (message of messageService.messages; track message.id) {
+    <ng-container
+      *ngTemplateOutlet="messageTemplate; context: { $implicit: message }"
+    ></ng-container>
+  }
+</div>
+
+<ng-template #messageTemplate let-message>
+  <div class="info-message-container">
+    <div class="envelop-image-container">
+      <img class="infoicon-image" src="/image/info_message/infoicon.svg" alt="infoicon" />
+    </div>
+
+    <div class="message-content">
+      <h2 class="message-type">{{ message.type }}</h2>
+      <p class="message-text">{{ message.text }}</p>
+    </div>
+
+    <button
+      class="delete-infoicon-button"
+      type="button"
+      (click)="messageService.closeMessage(message.id)"
+    >
+      <img
+        class="delete-infoicon-image"
+        src="/image/info_message/delete-infoicon.svg"
+        alt="delete infoicon"
+      />
+    </button>
+  </div>
+</ng-template>

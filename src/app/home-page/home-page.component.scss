@@ -1,0 +1,533 @@
+.body-section {
+  position: relative;
+}
+
+.hero {
+  background-image: url('/background_image/backgroun-img.jpg');
+  background-color: gray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  padding-top: 260px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: left;
+  font-size: 50px;
+  font-weight: 400;
+  color: white;
+}
+
+.live-input {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.text-input-field {
+  text-align: center;
+  border-radius: 4px;
+  width: 170px;
+  height: 51px;
+}
+
+.displayed-text {
+  color: white;
+  font-size: 18px;
+}
+
+.order-footer {
+  width: 1180px;
+  height: 161px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ffffff33;
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+}
+
+.tur-search-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.tur-param-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  p {
+    margin: 0;
+    color: white;
+    font-size: 14px;
+  }
+}
+
+.tur-param-control {
+  width: 250px;
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid white;
+  border-radius: 8px;
+
+  background: transparent;
+  color: white;
+
+  font-family: 'Nunito Sans';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding-right: 50px;
+}
+
+.tur-param-control::placeholder {
+  color: white;
+  opacity: 1;
+  font-family: 'Nunito Sans';
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.select-wrapper,
+.date-wrapper {
+  position: relative;
+}
+
+.calendar-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.button {
+  height: 52px;
+  background-color: #1a3e3e;
+  border-radius: 4px;
+  color: #fdfdfd;
+  font-family: 'Nunito Sans';
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 36px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-tur-button {
+  width: 213px;
+}
+
+.search-tur-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.programm-of-tur-button {
+  width: 200px;
+}
+
+.price-button {
+  width: 237px;
+}
+
+.select-icon,
+.calendar-icon {
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.section-subtitle {
+  color: #f2be22;
+  height: 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.about-tur {
+  margin: 80px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+
+  width: 1180px;
+  height: 526px;
+}
+
+.about-tour__content {
+  width: 580px;
+  height: 162px;
+  display: flex;
+  flex-direction: column;
+}
+
+.images-block {
+  position: relative;
+  width: 480px;
+  height: 540px;
+}
+
+.about-tur_img {
+  width: 350px;
+  height: 400px;
+  display: block;
+}
+
+.about-tour__image--back {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.village-image {
+  position: absolute;
+  top: 140px;
+  left: 130px;
+
+  width: 350px;
+  height: 400px;
+}
+
+.about-tour__image--front {
+  position: static;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle_icon {
+  width: 50px;
+  height: 50px;
+}
+
+.play_icon {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+
+.tur-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1180px;
+  margin: 80px auto;
+  align-items: center;
+}
+
+.tur-description__content {
+  display: flex;
+  flex-direction: column;
+  width: 580px;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.advantages {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.advantages:hover {
+  transform: translateX(8px);
+}
+
+.advantages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.advantages-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.advantages-title {
+  margin: 0;
+}
+
+.advantages-text {
+  margin: 4px 0 0;
+}
+
+.advantages-icons {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.front-adv-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.back-adv-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tur-description_images {
+  width: 510px;
+  height: 510px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.program-image {
+  transition: transform 0.3s ease;
+  width: 250px;
+  height: 250px;
+}
+
+.program-image:hover {
+  transform: scale(1.05);
+}
+
+.popular-destinations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 55px;
+}
+
+.destination-title-section {
+  width: 580px;
+  margin: 0 auto;
+
+  .section-subtitle,
+  .section-title {
+    text-align: center;
+  }
+}
+
+.popular-destinations_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1180px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.popular-destinations-card {
+  position: relative;
+  width: 380px;
+  height: 500px;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.destination-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.rating {
+  position: absolute;
+  display: flex;
+  top: 10px;
+  right: 0;
+  padding: 8px 16px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+
+  border-radius: 6px;
+  font-size: 20px;
+  gap: 10px;
+}
+
+.destination-image_footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 32px;
+  color: white;
+}
+
+.image_footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.title-section {
+  position: relative;
+}
+
+.destination-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.destination-subtitle {
+  margin: 0;
+}
+
+.destination-price {
+  position: relative;
+  font-weight: bold;
+  padding: 8px 16px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.travel-blog {
+  padding-top: 40px;
+  background-color: #f3f5f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.travel-blog-content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 1180px;
+  gap: 20px;
+}
+
+.travel-blog-card {
+  width: 580px;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 20px;
+}
+
+.travel-blog-image {
+  width: 230px;
+  height: 280px;
+  border-radius: 6px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.travel-blog-description {
+  display: flex;
+  flex-direction: column;
+  width: 294px;
+  height: 280px;
+}
+
+.travel-blog-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 294px;
+
+  .date {
+    color: #f2be22;
+  }
+}
+
+.travel-blog-button {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.dastinations-rating-button {
+  margin-bottom: 80px;
+}
+
+.imperssions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.impression-title {
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 120%;
+  letter-spacing: 0%;
+}
+
+.impression-subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #f2be22;
+}
+
+.impressions-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 1180px;
+  height: 520px;
+}

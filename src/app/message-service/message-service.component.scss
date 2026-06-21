@@ -1,0 +1,84 @@
+.messages-container {
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-message-container {
+  position: static;
+  padding: 5px auto;
+  z-index: 900;
+  top: 165px;
+  right: 25px;
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  height: 70px;
+  border-radius: 10px;
+  border: 1px;
+  opacity: 1;
+  gap: 20px;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.delete-infoicon {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.delete-infoicon-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.delete-infoicon-image {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.envelop-image-container {
+  margin: 15px 0 15px 15px;
+  flex-shrink: 0;
+}
+
+.message-type {
+  font-weight: 716;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #f3f3f3;
+  margin: 0;
+}
+
+.message-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #f3f3f3;
+  margin: 0;
+}
+
+.infoicon-image {
+  width: 40px;
+  height: 40px;
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
