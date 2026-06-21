@@ -1,0 +1,74 @@
+  <footer class="footer">
+    <div class="subscription">
+      <div class="about-subscription">
+        <p class="impression-subtitle">актуально</p>
+        <h2 class="impression-title">Получайте полезные рассылки о путешествиях</h2>
+      </div>
+      <div class="email-box">
+        <div class="title-and-input">
+          <p>Введите e-mail адрес</p>
+          <input class="email-inout" type="email" placeholder="name@domain.com" />
+        </div>
+
+        <button class="subscription-button button"
+        (click)="messageService.showSuccess('вы подписаны на рассылку')"
+        >Подписаться на новости
+        </button>
+        <p class="newsletter-agreement">
+          подписываясь на новости, вы автоматически соглашаетесь с условиями обработки персональных
+          данных и правилами рекламных рассылок
+        </p>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="about-company">
+        <div class="company-info">
+          <h2 class="footer-title">Компания «РумТибет»</h2>
+          <p>
+            Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+            тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.
+          </p>
+        </div>
+
+        <div class="company-contact">
+          <p>info@domain.com</p> 
+          <p>+7 (123) 456-78-90</p>
+        </div>
+        <div class="social-links">
+          <img src="icons/social_icons/telegram.svg" alt="telegram" />
+          <img src="icons/social_icons/vkontakte.svg" alt="telegram" />
+          <img src="icons/social_icons/pinterest.svg" alt="telegram" />
+          <img src="icons/social_icons/skype.svg" alt="telegram" />
+        </div>
+      </div>
+<div class="footer-links-column">
+  <h3 class="footer-title">Наши услуги</h3>
+  <ul class="footer-links-list">
+    <li><a routerLink="/summer-hiking">Прогулки в горы летом</a></li>
+    <li><a routerLink="/winter-hiking">Зимние походы в горы</a></li>
+    <li><a routerLink="/mountain-temples">Посещение храмов в горах</a></li>
+    <li><a routerLink="/extreme-tourism">Экстремальные виды туризма</a></li>
+    <li><a routerLink="/amazon-hiking">Походы в джунглях Амазонии</a></li>
+    <li><a routerLink="/africa-trip">Поездка в Африку</a></li>
+  </ul>
+</div>
+
+<div class="footer-links-column">
+  <h3 class="footer-title">Важно для путешествий</h3>
+
+  <ul class="footer-links-list">
+    <li><a routerLink="/how-to-pack">Как собрать в долгий поход?</a></li>
+    <li><a routerLink="/hiking-essentials">Жизненно важные предметы для похода</a></li>
+    <li><a routerLink="/mountain-temples">Посещение храмов в горах</a></li>
+    <li><a routerLink="/travel-insurance">Медицинская страховка, гарантии безопасности</a></li>
+    <li><a routerLink="/for-doctors">Если вы врач — загляните сюда</a></li>
+  </ul>
+</div>
+    </div>
+    <div class="personal-data-policy">
+      <div class="policy-info">
+        <p>ИП Константинопольский К.К., 2023</p>
+        <a class="privacy-policy-link" href="#"> Политика обработки персональных данных </a>
+      </div>
+    </div>
+  </footer>

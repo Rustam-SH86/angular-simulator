@@ -1,94 +1,45 @@
-import { Component } from '@angular/core';
- import { Colors } from '../enums/Color'; 
- import { Collection } from './collection'; 
- import { FormsModule } from '@angular/forms';
- 
- 
- @Component({ 
-  selector: 'app-root', 
-  imports: [FormsModule],
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { LocalStorageService } from '../localstorage.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { RouterOutlet } from '@angular/router';
+import { MessageServiceComponent } from './message-service/message-service.component';
+
+@Component({
+  selector: 'app-root',
+  imports: [
+    FormsModule,
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    MessageServiceComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss', })
-
-
+  styleUrl: './app.component.scss',
+})
 export class AppComponent {
-  protected readonly companyName = 'РУМТИБЕТ';
-  protected showDate = true;
-  protected currentTime = '';
-  protected displayedNumber = 0;
-  protected isDateType = false;
-  protected selectedLocation = '';
-  protected selectedDate = '';
-  protected selectedParticipants = '';
-  protected inputText = '';
   protected isLoading = true;
 
-  protected readonly advantages = [
-    {
-      bg_icon: "/icons/advantages/background_people.svg",
-      icon:"/icons/advantages/people.svg", 
-      title: "Опытный гид", 
-      text: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации."
-    },
-    {
-      bg_icon: "/icons/advantages/background_shield.svg",
-      icon:"/icons/advantages/shield.svg", 
-      title: "Безопасный поход", 
-      text: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации."
-    },
-    {
-      bg_icon: "/icons/advantages/background_price.svg",
-      icon:"/icons/advantages/price.svg", 
-      title: "Лояльные цены", 
-      text: "Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации."
-    }
-  ];
-
-protected readonly programImages = [
-  { src: '/image/programs/lake.svg', alt: 'lake' },
-  { src: '/image/programs/man.svg', alt: 'man' },
-  { src: '/image/programs/snowmobile.svg', alt: 'snowmobile' },
-  { src: '/image/programs/mountains.svg', alt: 'mountains' },
-];
+  public localstorageService: LocalStorageService = inject(LocalStorageService);
 
   constructor() {
+    this.saveVisitsCountAndDate();
     this.stopLoader();
-    setInterval(()=>{
-      this.currentTime = new Date().toLocaleString();
-    },1000);
-  };
+  }
 
-  protected changeToDate() {
-    this.isDateType = true;
-  };
+  saveVisitsCountAndDate(): void {
+    let currentVisit = this.localstorageService.getValue<number>('visitsCount') ?? 0;
+    currentVisit++;
+    this.localstorageService.setValue('visitsCount', currentVisit);
+    this.localstorageService.setValue('lastVisitDate', new Date().toLocaleString());
+  }
 
-  protected changeToText(event: Event) {
-    const input = event.target as HTMLInputElement;
-
-    if (!input.value) {
-      this.isDateType = false;
-    }
-  };
-
-  protected addNumber(): void {
-    this.displayedNumber ++;
-  };
-
-  protected subtractNumber(): void {
-    if(this.displayedNumber > 0) {
-      this.displayedNumber --;
-    }else {
-      
-    };
-  };
-    
-  protected changeNameOfButton(): void {
-    this.showDate = !this.showDate;
-  };
-  
   stopLoader(): void {
     setTimeout(() => {
       this.isLoading = false;
-    },2000)
-  };
-};
+    }, 2000);
+  }
+}

@@ -1,0 +1,232 @@
+<div class="body-section">
+  @if (false) {
+    <div class="loader-container">
+      <div class="overlay"></div>
+      <div class="loader"></div>
+    </div>
+  }
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="title">
+        Насладись прогулкой в горах<br />
+        с командой единомышленников
+      </h1>
+      <div class="order-footer">
+        <form class="tur-search-form">
+          <div class="tur-param-field">
+            <div class="select-wrapper">
+              <select
+                class="tur-param-control"
+                name="city"
+                id="city-select"
+                [(ngModel)]="selectedLocation"
+              >
+                <option value="">Локация для тура</option>
+                <option>Джомолунгма</option>
+                <option>Эльбрус</option>
+                <option>Килиманджаро</option>
+              </select>
+              <img class="select-icon" src="/icons/select.png" alt="" />
+            </div>
+            <p>выберите из списка</p>
+          </div>
+
+          <div class="tur-param-field">
+            <div class="date-wrapper">
+              <input
+                class="tur-param-control"
+                name="date"
+                [(ngModel)]="selectedDate"
+                placeholder="Дата похода"
+                [type]="isDateType ? 'date' : 'text'"
+                (focus)="changeToDate()"
+                (blur)="changeToText($event)"
+              />
+              <img class="calendar-icon" src="/icons/calendar.png" alt="calendar" />
+            </div>
+
+            <p>укажите дату</p>
+          </div>
+
+          <div class="tur-param-field">
+            <div class="select-wrapper">
+              <select
+                class="tur-param-control"
+                name="participant"
+                id="participants"
+                [(ngModel)]="selectedParticipants"
+              >
+                <option value="">Участники</option>
+                <option>экспедиционная группа</option>
+                <option>отряд бойскаутов</option>
+              </select>
+              <img class="select-icon" src="/icons/select.png" alt="" />
+            </div>
+            <p>выберите из списка</p>
+          </div>
+
+          <button
+            class="search-tur-button button"
+            type="submit"
+            [disabled]="!selectedLocation || !selectedDate || !selectedParticipants"
+          >
+            Найти программу
+          </button>
+        </form>
+      </div>
+      <div class="live-input">
+        <input class="text-input-field" placeholder="введите текст" [(ngModel)]="inputText" />
+        <p class="displayed-text">{{ inputText }}</p>
+      </div>
+    </div>
+  </section>
+  <section class="about-tur">
+    <div class="images-block">
+      <img
+        class="about-tur_img about-tour__image--back"
+        src="/image/about-tur-rock_img.svg"
+        alt="rock image"
+      />
+      <div class="village-image">
+        <img
+          class="about-tur_img about-tour__image--front"
+          src="/image/about-tur-village_img.svg"
+          alt="village image"
+        />
+        <div class="play-button">
+          <img class="rectangle_icon" src="/icons/about-tur-rectangle_icon.svg" />
+          <img class="play_icon" src="/icons/about-tur-play_icon.svg" />
+        </div>
+      </div>
+    </div>
+    <div class="about-tour__content">
+      <p class="about-tur_subtitle section-subtitle">о нашем походе</p>
+      <h2 class="about-tur_title section-title">
+        Исследуйте все горные массивы мира вместе с нами
+      </h2>
+      <p class="about-tur_description">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат
+        Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его
+        поисками в классической латинской литературе.
+      </p>
+      <button
+        class="programm-of-tur-button button"
+        (click)="messageService.showSuccess('Направления получены')"
+      >
+        Программа тура
+      </button>
+    </div>
+  </section>
+  <section class="tur-description">
+    <div class="tur-description__content">
+      <p class="tur-description_subtitle section-subtitle">наше предложение</p>
+      <h2 class="tur-description_title section-title">Лучшие программы для тебя</h2>
+      <p class="tur-description_text">
+        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух
+        тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.
+      </p>
+      <div class="advantages-list">
+        @for (item of advantages; track $index) {
+          <div class="advantages">
+            <div class="advantages-icons">
+              <img class="back-adv-icon" [src]="item.bg_icon" />
+              <img class="front-adv-icon" [src]="item.icon" />
+            </div>
+            <div class="advantages-content">
+              <h3 class="advantages-title">{{ item.title }}</h3>
+              <p class="advantages-text">{{ item.text }}</p>
+            </div>
+          </div>
+        }
+        <button
+          class="price-button button"
+          (click)="messageService.showInfo('Стоимость отправлена на почту')"
+        >
+          Стоимость программы
+        </button>
+      </div>
+    </div>
+    <div class="tur-description_images">
+      @for (item of programImages; track $index) {
+        <div class="tur-description-images">
+          <img class="program-image" [src]="item.src" [alt]="item.alt" />
+        </div>
+      }
+    </div>
+  </section>
+  <section class="popular-destinations">
+    <div class="destination-title-section">
+      <p class="tur-description_subtitle section-subtitle">по версии отдыхающих</p>
+      <h2 class="tur-description_title section-title">Популярные направления</h2>
+    </div>
+    <div class="popular-destinations_content">
+      @for (item of destinations; track $index) {
+        <div class="popular-destinations-card">
+          <img class="destination-image" [src]="item.image" />
+          <div class="rating">
+            <img class="rating-star-icon" [src]="item.ratingIcon" />
+            <span class="rating-value">{{ item.ratingValue }}</span>
+          </div>
+          <div class="destination-image_footer">
+            <img class="image_footer" [src]="item.imageFooter" />
+            <div class="title-section">
+              <h2 class="destination-title">{{ item.title }}</h2>
+              <p class="destination-subtitle">{{ item.subtitle }}</p>
+            </div>
+            <div class="destination-price">{{ item.price }}</div>
+          </div>
+        </div>
+      }
+    </div>
+    <button
+      class="dastinations-rating-button button"
+      (click)="messageService.showWarn('Программа недоступна')"
+    >
+      Рейтинг направлений
+    </button>
+  </section>
+  <section class="travel-blog">
+    <div class="destination-title-section">
+      <p class="tur-description_subtitle section-subtitle">делимся впечатлениями</p>
+      <h2 class="tur-description_title section-title">Блог о путешествиях</h2>
+    </div>
+    <div class="travel-blog-content">
+      @for (item of travelBlog; track $index) {
+        <div class="travel-blog-card">
+          <img class="travel-blog-image" [src]="item.image" />
+          <div class="travel-blog-description">
+            <h2 class="travel-blog-title">{{ item.title }}</h2>
+            <p class="travel-blog-description">{{ item.description }}</p>
+            <div class="travel-blog-footer">
+              <p class="date">{{ item.date }}</p>
+              <a href="" class="read-article">{{ item.readArticle }}</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <button
+      class="travel-blog-button button"
+      (click)="messageService.showError('Материалы недоступны')"
+    >
+      Другие материалы
+    </button>
+  </section>
+  <section class="imperssions">
+    <div class="destination-title-section">
+      <p class="tur-description_subtitle section-subtitle">фото-отчет</p>
+      <h2 class="tur-description_title section-title">Делимся впечатлениями</h2>
+    </div>
+    <div class="impressions-images">
+      <img src="image/impressions/cappadocia.svg" alt="cappadocia" />
+      <img src="image/impressions/map.svg" alt="cappadocia" />
+      <img src="image/impressions/dubai.svg" alt="dubai" />
+      <img src="image/impressions/ocean.svg" alt="ocean" />
+      <img src="image/impressions/canyon.svg" alt="canyon" />
+      <img src="image/impressions/diary.svg" alt="diary" />
+    </div>
+    <button class="travel-blog-button button">Наш pinterest</button>
+  </section>
+</div>
