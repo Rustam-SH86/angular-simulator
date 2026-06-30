@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { MessageServiceComponent } from './message-service/message-service.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { MessageServiceComponent } from './message-service/message-service.compo
     HeaderComponent,
     FooterComponent,
     MessageServiceComponent,
+    LoaderComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
