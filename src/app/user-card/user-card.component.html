@@ -1,0 +1,116 @@
+<div class="user-card">
+  <div class="user-header">
+    <h2 class="user-name">
+      {{ user.name || 'Неизвестно' }}
+    </h2>
+
+    <p class="user-username">
+      @{{ user.username || 'Неизвестно' }}
+    </p>
+  </div>
+
+  <section class="user-section">
+    <h3 class="section-title">Контакты</h3>
+
+    <div class="section-row">
+      <span class="label">Эл. почта:</span>
+      <span class="value">
+        {{ user.email || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Телефон:</span>
+      <span class="value">
+        {{ user.phone || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Веб-сайт:</span>
+      <span class="value">
+        {{ user.website || 'Неизвестно' }}
+      </span>
+    </div>
+  </section>
+
+  <section class="user-section">
+    <h3 class="section-title">Адрес проживания</h3>
+
+    <div class="section-row">
+      <span class="label">Город:</span>
+      <span class="value">
+        {{ user.address.city || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Улица:</span>
+      <span class="value">
+        {{ user.address.street || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Офис:</span>
+      <span class="value">
+        {{ user.address.suite || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Индекс:</span>
+      <span class="value">
+        {{ user.address.zipcode || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Широта:</span>
+      <span class="value">
+        {{ user.address.geo.lat || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Долгота:</span>
+      <span class="value">
+        {{ user.address.geo.lng || 'Неизвестно' }}
+      </span>
+    </div>
+  </section>
+
+  <section class="user-section">
+    <h3 class="section-title">Место работы</h3>
+
+    <div class="section-row">
+      <span class="label">Компания:</span>
+      <span class="value">
+        {{ user.company.name || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Миссия:</span>
+      <span class="value">
+        {{ user.company.catchPhrase || 'Неизвестно' }}
+      </span>
+    </div>
+
+    <div class="section-row">
+      <span class="label">Специализация:</span>
+      <span class="value">
+        {{ user.company.bs || 'Неизвестно' }}
+      </span>
+    </div>
+  </section>
+
+  <button
+    id="delete-user-{{ user.id }}"
+    type="button"
+    class="delete-user-button"
+    (click)="onDeleteUser()"
+  >
+    Удалить пользователя
+  </button>
+</div>

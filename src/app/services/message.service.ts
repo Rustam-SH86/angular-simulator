@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MessageType } from './message.enums';
-import { Message } from './message.interfaces';
+import { MessageType } from '../enums/message.enums'
+import { Message } from '../interfaces/message.interfaces';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
