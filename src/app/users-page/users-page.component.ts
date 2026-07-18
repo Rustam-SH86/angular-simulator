@@ -5,17 +5,35 @@ import { UserCardComponent } from '../user-card/user-card.component';
 import { UserCreateComponent } from '../user-create/user-create.component';
 import { IUser } from '../interfaces/user-interface';
 import { UserFilterComponent } from '../user-filter/user-filter.component';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
+
 @Component({
   selector: 'app-users-page',
   imports: [CommonModule, UserCardComponent,UserCreateComponent,UserCreateComponent,UserFilterComponent],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
+
+
 })
 export class UsersPageComponent {
   private userService = inject(UserService);
+  private filterSubject = new BehaviorSubject<string>('');
   public users$ = this.userService.getUsers();
-  public filteredUsers$ = this.users$
+
+  public filteredUsers$ = combineLatest([
+    this.users$,
+    this.filterSubject,
+  ]).pipe(
+    map(([users, searchTerm]: [IUser[], string]) => {
+      return users.filter((user: IUser) =>
+        user.name
+          .trim()
+          .toLowerCase()
+          .includes(searchTerm.trim().toLowerCase()),
+      );
+    }),
+  );
+  
   
   public ngOnInit(): void {
     this.userService.loadUsers().subscribe();
@@ -30,12 +48,6 @@ export class UsersPageComponent {
   }
 
   public onFilterChange(searchTerm: string): void {
-  this.filteredUsers$ = this.userService.users$.pipe(
-    map(users =>
-      users.filter(user =>
-        user.name.toLowerCase().includes(searchTerm)
-      )
-    )
-  );
-}
+    this.filterSubject.next(searchTerm);
+  }
 }
