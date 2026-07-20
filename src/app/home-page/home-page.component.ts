@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MessageService } from '../../message.service/message.service';
-import { MessageType } from '../../message.service/message.enums';
-import { LoaderService } from '../loader.service';
+import { MessageService } from '../services/message.service';
+import { MessageType } from '../enums/message.enums';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +18,6 @@ export class HomePageComponent {
   protected inputText = '';
   protected readonly MessageType = MessageType;
   public messageService: MessageService = inject(MessageService);
-  private loaderService = inject(LoaderService);
 
   protected readonly destinations = [
     {

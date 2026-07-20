@@ -1,0 +1,401 @@
+<form
+  id="user-create-form"
+  class="user-create-form"
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+>
+  <h2 class="user-create-title">Создание пользователя</h2>
+
+  <div class="form-columns">
+    <div class="form-column">
+      <div class="form-field">
+        <label for="user-name">Имя</label>
+
+        <input
+          id="user-name"
+          type="text"
+          formControlName="name"
+          placeholder="Введите имя"
+        />
+
+        @if (
+          userForm.controls.name.touched &&
+          userForm.controls.name.hasError('required')
+        ) {
+          <span class="validation-error">Имя обязательно</span>
+        }
+
+        @if (
+          userForm.controls.name.touched &&
+          userForm.controls.name.hasError('minlength')
+        ) {
+          <span class="validation-error">
+            Имя должно содержать минимум 2 символа
+          </span>
+        }
+
+        @if (
+          userForm.controls.name.touched &&
+          userForm.controls.name.hasError('maxlength')
+        ) {
+          <span class="validation-error">
+            Имя должно содержать не более 100 символов
+          </span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="user-username">Username</label>
+
+        <input
+          id="user-username"
+          type="text"
+          formControlName="username"
+          placeholder="Введите username"
+        />
+
+        @if (
+          userForm.controls.username.touched &&
+          userForm.controls.username.hasError('required')
+        ) {
+          <span class="validation-error">Username обязателен</span>
+        }
+
+        @if (
+          userForm.controls.username.touched &&
+          userForm.controls.username.hasError('minlength')
+        ) {
+          <span class="validation-error">
+            Username должен содержать минимум 3 символа
+          </span>
+        }
+
+        @if (
+          userForm.controls.username.touched &&
+          userForm.controls.username.hasError('maxlength')
+        ) {
+          <span class="validation-error">
+            Username должен содержать не более 30 символов
+          </span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="user-email">Эл. почта</label>
+
+        <input
+          id="user-email"
+          type="email"
+          formControlName="email"
+          placeholder="Введите электронную почту"
+        />
+
+        @if (
+          userForm.controls.email.touched &&
+          userForm.controls.email.hasError('required')
+        ) {
+          <span class="validation-error">
+            Электронная почта обязательна
+          </span>
+        }
+
+        @if (
+          userForm.controls.email.touched &&
+          userForm.controls.email.hasError('email')
+        ) {
+          <span class="validation-error">
+            Введите корректную электронную почту
+          </span>
+        }
+
+        @if (
+          userForm.controls.email.touched &&
+          userForm.controls.email.hasError('maxlength')
+        ) {
+          <span class="validation-error">
+            Почта должна содержать не более 100 символов
+          </span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="user-phone">Телефон</label>
+
+        <input
+          id="user-phone"
+          type="text"
+          formControlName="phone"
+          placeholder="Введите телефон"
+        />
+
+        @if (
+          userForm.controls.phone.touched &&
+          userForm.controls.phone.hasError('required')
+        ) {
+          <span class="validation-error">Телефон обязателен</span>
+        }
+
+        @if (
+          userForm.controls.phone.touched &&
+          userForm.controls.phone.hasError('minlength')
+        ) {
+          <span class="validation-error">
+            Телефон должен содержать минимум 10 символов
+          </span>
+        }
+
+        @if (
+          userForm.controls.phone.touched &&
+          userForm.controls.phone.hasError('maxlength')
+        ) {
+          <span class="validation-error">
+            Телефон должен содержать не более 25 символов
+          </span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="user-website">Веб-сайт</label>
+
+        <input
+          id="user-website"
+          type="text"
+          formControlName="website"
+          placeholder="Введите веб-сайт"
+        />
+
+        @if (
+          userForm.controls.website.touched &&
+          userForm.controls.website.hasError('maxlength')
+        ) {
+          <span class="validation-error">
+            Веб-сайт должен содержать не более 100 символов
+          </span>
+        }
+      </div>
+
+      <fieldset formGroupName="company">
+        <legend>Компания</legend>
+
+        <div class="form-field">
+          <label for="company-name">Название компании</label>
+
+          <input
+            id="company-name"
+            type="text"
+            formControlName="name"
+            placeholder="Введите название компании"
+          />
+
+          @if (
+            userForm.controls.company.controls.name.touched &&
+            userForm.controls.company.controls.name.hasError('required')
+          ) {
+            <span class="validation-error">
+              Название компании обязательно
+            </span>
+          }
+
+          @if (
+            userForm.controls.company.controls.name.touched &&
+            userForm.controls.company.controls.name.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Название должно содержать не более 50 символов
+            </span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="company-catch-phrase">Миссия</label>
+
+          <input
+            id="company-catch-phrase"
+            type="text"
+            formControlName="catchPhrase"
+            placeholder="Введите миссию компании"
+          />
+
+          @if (
+            userForm.controls.company.controls.catchPhrase.touched &&
+            userForm.controls.company.controls.catchPhrase.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Миссия должна содержать не более 200 символов
+            </span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="company-bs">Специализация</label>
+
+          <input
+            id="company-bs"
+            type="text"
+            formControlName="bs"
+            placeholder="Введите специализацию"
+          />
+
+          @if (
+            userForm.controls.company.controls.bs.touched &&
+            userForm.controls.company.controls.bs.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Специализация должна содержать не более 100 символов
+            </span>
+          }
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="form-column">
+      <fieldset formGroupName="address">
+        <legend>Адрес</legend>
+
+        <div class="form-field">
+          <label for="address-city">Город</label>
+
+          <input
+            id="address-city"
+            type="text"
+            formControlName="city"
+            placeholder="Введите город"
+          />
+
+          @if (
+            userForm.controls.address.controls.city.touched &&
+            userForm.controls.address.controls.city.hasError('required')
+          ) {
+            <span class="validation-error">Город обязателен</span>
+          }
+
+          @if (
+            userForm.controls.address.controls.city.touched &&
+            userForm.controls.address.controls.city.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Город должен содержать не более 50 символов
+            </span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="address-street">Улица</label>
+
+          <input
+            id="address-street"
+            type="text"
+            formControlName="street"
+            placeholder="Введите улицу"
+          />
+
+          @if (
+            userForm.controls.address.controls.street.touched &&
+            userForm.controls.address.controls.street.hasError('required')
+          ) {
+            <span class="validation-error">Улица обязательна</span>
+          }
+
+          @if (
+            userForm.controls.address.controls.street.touched &&
+            userForm.controls.address.controls.street.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Улица должна содержать не более 100 символов
+            </span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="address-suite">Офис</label>
+
+          <input
+            id="address-suite"
+            type="text"
+            formControlName="suite"
+            placeholder="Введите офис"
+          />
+
+          @if (
+            userForm.controls.address.controls.suite.touched &&
+            userForm.controls.address.controls.suite.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Офис должен содержать не более 50 символов
+            </span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="address-zipcode">Индекс</label>
+
+          <input
+            id="address-zipcode"
+            type="text"
+            formControlName="zipcode"
+            placeholder="Введите индекс"
+          />
+
+          @if (
+            userForm.controls.address.controls.zipcode.touched &&
+            userForm.controls.address.controls.zipcode.hasError('required')
+          ) {
+            <span class="validation-error">Индекс обязателен</span>
+          }
+
+          @if (
+            userForm.controls.address.controls.zipcode.touched &&
+            userForm.controls.address.controls.zipcode.hasError('minlength')
+          ) {
+            <span class="validation-error">
+              Индекс должен содержать минимум 5 символов
+            </span>
+          }
+
+          @if (
+            userForm.controls.address.controls.zipcode.touched &&
+            userForm.controls.address.controls.zipcode.hasError('maxlength')
+          ) {
+            <span class="validation-error">
+              Индекс должен содержать не более 10 символов
+            </span>
+          }
+        </div>
+
+        <fieldset formGroupName="geo">
+          <legend>Координаты</legend>
+
+          <div class="form-field">
+            <label for="geo-lat">Широта</label>
+
+            <input
+              id="geo-lat"
+              type="text"
+              formControlName="lat"
+              placeholder="Введите широту"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="geo-lng">Долгота</label>
+
+            <input
+              id="geo-lng"
+              type="text"
+              formControlName="lng"
+              placeholder="Введите долготу"
+            />
+          </div>
+        </fieldset>
+      </fieldset>
+    </div>
+  </div>
+
+  <button
+    id="create-user-button"
+    class="create-user-button"
+    type="submit"
+  >
+    Создать пользователя
+  </button>
+</form>

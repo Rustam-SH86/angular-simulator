@@ -1,88 +1,16 @@
+<app-user-filter (filterChange)="onFilterChange($event)"></app-user-filter>
+
+<app-user-create (createUser)="addUser($event)"></app-user-create>
+
 <div class="users-page-section">
-  <h1 class="user-page-title">Список Пользователей</h1>
-<div class="user-cards-conteiner">
-  @for (user of users$ | async; track user.id) {
-  <div class="user-card"> 
+  <h1 class="user-page-title">Список пользователей</h1>
 
-    <div class="user-header">
-      <h1 class="user-name">{{ user.name }}</h1>
-      <h2 class="user-username">@{{ user.username }}</h2>
-    </div>
-
-    <section class="user-section">
-      <h3 class="section-title">Контакты</h3>
-
-      <div class="section-row">
-        <span class="label">Эл. почта:</span>
-        <span class="value accent">{{ user.email }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Телефон:</span>
-        <span class="value">{{ user.phone }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Веб-сайт:</span>
-        <span class="value accent">{{ user.website }}</span>
-      </div>
-    </section>
-
-    <section class="user-section">
-      <h3 class="section-title">Адрес проживания</h3>
-
-      <div class="section-row">
-        <span class="label">Город:</span>
-        <span class="value">{{ user.address.city }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Улица:</span>
-        <span class="value">{{ user.address.street }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Офис:</span>
-        <span class="value">{{ user.address.suite }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Индекс:</span>
-        <span class="value">{{ user.address.zipcode }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Координаты:</span>
-
-        <div class="coordinates">
-          <span class="coordinate">{{ user.address.geo.lat }}</span>
-          <span class="coordinate">{{ user.address.geo.lng }}</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="user-section">
-      <h3 class="section-title">Место работы</h3>
-
-      <div class="section-row">
-        <span class="label">Компания:</span>
-        <span class="value">{{ user.company.name }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Миссия:</span>
-        <span class="value">{{ user.company.catchPhrase }}</span>
-      </div>
-
-      <div class="section-row">
-        <span class="label">Специализация:</span>
-        <span class="value">{{ user.company.bs }}</span>
-      </div>
-    </section>
-
+  <div class="user-cards-conteiner">
+    @for (user of filteredUsers$ | async; track user.id) {
+      <app-user-card
+        [user]="user"
+        (deleteUser)="deleteUser($event)"
+      ></app-user-card>
+    }
   </div>
-}
-</div>
-
-
 </div>

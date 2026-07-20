@@ -1,0 +1,59 @@
+.user-card {
+  padding: 0 25px;
+  width: 440px;
+  height: 630px;
+  border-top: 4px solid #d4a373;
+  background-color: white;
+  
+}
+
+.section-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #667c7c;
+  font-size: 14px;
+}
+
+.section-title {
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #d8dde2;
+}
+
+.user-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-username {
+  color: #d4a373;
+  font-weight: 500;
+  font-size: 15px; 
+}
+
+.coordinates {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  background-color: #e2e8f0;
+}
+
+.accent {
+  color: #d4a373;
+}
+
+.delete-user-button{
+margin-top:10px;
+cursor: pointer;
+  
+}

@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUser } from '../user-interface';
+import { IUser } from '../interfaces/user-interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserApiService {
-  private http:HttpClient = inject(HttpClient);
+  private http: HttpClient = inject(HttpClient);
 
-  public getUsers(): Observable<IUser[]>  {
+  public getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>('https://jsonplaceholder.typicode.com/users');
   }
 }
