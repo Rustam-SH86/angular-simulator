@@ -1,11 +1,15 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../interfaces/user-interface';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+
 
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,InputTextModule,ButtonModule],
   templateUrl: './user-create.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './user-create.component.scss',
 })
 export class UserCreateComponent {
