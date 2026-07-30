@@ -1,4 +1,4 @@
-<div class="user-card">
+<p-card styleClass="user-card">
   <div class="user-header">
     <h2 class="user-name">
       {{ user.name || 'Неизвестно' }}
@@ -105,12 +105,14 @@
     </div>
   </section>
 
-  <button
-    id="delete-user-{{ user.id }}"
-    type="button"
-    class="delete-user-button"
-    (click)="onDeleteUser()"
-  >
-    Удалить пользователя
-  </button>
-</div>
+<button
+  pButton
+  id="delete-user-{{ user.id }}"
+  type="button"
+  severity="danger"
+  class="delete-user-button"
+  (click)="onDeleteUser()"
+>
+  Удалить пользователя
+</button>
+</p-card>

@@ -88,8 +88,7 @@
           alt="village image"
         />
         <div class="play-button">
-          <img class="rectangle_icon" src="/icons/about-tur-rectangle_icon.svg" />
-          <img class="play_icon" src="/icons/about-tur-play_icon.svg" />
+          <fa-icon [icon]="faPlay"></fa-icon>
         </div>
       </div>
     </div>
@@ -125,7 +124,11 @@
           <div class="advantages">
             <div class="advantages-icons">
               <img class="back-adv-icon" [src]="item.bg_icon" />
-              <img class="front-adv-icon" [src]="item.icon" />
+              <fa-icon
+              class="front-adv-icon"
+              [icon] = "item.icon"
+              >
+              </fa-icon>
             </div>
             <div class="advantages-content">
               <h3 class="advantages-title">{{ item.title }}</h3>
@@ -159,7 +162,10 @@
         <div class="popular-destinations-card">
           <img class="destination-image" [src]="item.image" />
           <div class="rating">
-            <img class="rating-star-icon" [src]="item.ratingIcon" />
+            <fa-icon
+            class="raiting-icon"
+            [icon] = "item.ratingIcon"
+            ></fa-icon>
             <span class="rating-value">{{ item.ratingValue }}</span>
           </div>
           <div class="destination-image_footer">
@@ -191,7 +197,7 @@
           <img class="travel-blog-image" [src]="item.image" />
           <div class="travel-blog-description">
             <h2 class="travel-blog-title">{{ item.title }}</h2>
-            <p class="travel-blog-description">{{ item.description }}</p>
+            <p class="travel-blog-text">{{ item.description }}</p>
             <div class="travel-blog-footer">
               <p class="date">{{ item.date }}</p>
               <a href="" class="read-article">{{ item.readArticle }}</a>
@@ -207,7 +213,7 @@
       Другие материалы
     </button>
   </section>
-  <section class="imperssions">
+  <section class="impressions">
     <div class="destination-title-section">
       <p class="tur-description_subtitle section-subtitle">фото-отчет</p>
       <h2 class="tur-description_title section-title">Делимся впечатлениями</h2>

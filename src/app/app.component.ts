@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './services/localstorage.service';
@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { MessageServiceComponent } from './message-service/message-service.component';
 import { LoaderComponent } from './loader/loader.component';
+
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,10 @@ import { LoaderComponent } from './loader/loader.component';
     HeaderComponent,
     FooterComponent,
     MessageServiceComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.scss',
 })
 export class AppComponent {

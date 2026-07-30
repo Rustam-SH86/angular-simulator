@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
 import { UserCardComponent } from '../user-card/user-card.component';
@@ -6,35 +6,35 @@ import { UserCreateComponent } from '../user-create/user-create.component';
 import { IUser } from '../interfaces/user-interface';
 import { UserFilterComponent } from '../user-filter/user-filter.component';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-users-page',
-  imports: [CommonModule, UserCardComponent,UserCreateComponent,UserCreateComponent,UserFilterComponent],
+  imports: [
+    CommonModule,
+    UserCardComponent,
+    UserCreateComponent,
+    UserCreateComponent,
+    UserFilterComponent,
+  ],
   templateUrl: './users-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './users-page.component.scss',
-
-
 })
 export class UsersPageComponent {
   private userService = inject(UserService);
   private filterSubject = new BehaviorSubject<string>('');
   public users$ = this.userService.getUsers();
 
-  public filteredUsers$ = combineLatest([
-    this.users$,
-    this.filterSubject,
-  ]).pipe(
+
+  public filteredUsers$ = combineLatest([this.users$, this.filterSubject]).pipe(
     map(([users, searchTerm]: [IUser[], string]) => {
       return users.filter((user: IUser) =>
-        user.name
-          .trim()
-          .toLowerCase()
-          .includes(searchTerm.trim().toLowerCase()),
+        user.name.trim().toLowerCase().includes(searchTerm.trim().toLowerCase()),
       );
     }),
   );
-  
-  
+
   public ngOnInit(): void {
     this.userService.loadUsers().subscribe();
   }

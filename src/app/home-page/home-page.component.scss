@@ -237,15 +237,22 @@
   justify-content: center;
 }
 
-.rectangle_icon {
-  width: 50px;
-  height: 50px;
+.play-button {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
-.play_icon {
-  position: absolute;
-  width: 22px;
-  height: 22px;
+.play-button fa-icon {
+  font-size: 28px;
+  color: var(--dark-green);
 }
 
 .tur-description {
@@ -306,16 +313,17 @@
 
 .front-adv-icon {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  display: block;
-}
-
-.back-adv-icon {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  font-size: 34px;
+  color: #4f7d73;
+}
+
+.back-adv-icon {
+  width: 100%;
+  height: 100%;
 }
 
 .tur-description_images {
@@ -341,6 +349,10 @@
   flex-direction: column;
   align-items: center;
   gap: 55px;
+}
+
+.raiting-icon{
+  color: #f2be22;
 }
 
 .destination-title-section {
@@ -450,9 +462,8 @@
 .travel-blog-content {
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
   width: 1180px;
   gap: 20px;
 }
@@ -461,16 +472,15 @@
   width: 580px;
   display: flex;
   flex-direction: row;
-  background-color: rgba(255, 255, 255, 0.7);
   margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .travel-blog-image {
   width: 230px;
   height: 280px;
   border-radius: 6px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
 }
 
 .travel-blog-description {
@@ -480,16 +490,23 @@
   height: 280px;
 }
 
+.travel-blog-title {
+  color: #18121e;
+}
+
+.travel-blog-text {
+  color: #18121e;
+}
+
 .travel-blog-footer {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 294px;
+}
 
-  .date {
-    color: #f2be22;
-  }
+.date {
+  color: #f2be22;
 }
 
 .travel-blog-button {
@@ -501,7 +518,7 @@
   margin-bottom: 80px;
 }
 
-.imperssions {
+.impressions{
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -2,15 +2,20 @@
   max-width: 1200px;
   margin: 40px auto;
   padding: 40px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  background: var(--p-surface-card);
+  color: var(--p-text-color);
+
+  border: 1px solid var(--p-content-border-color);
+  border-radius: var(--p-border-radius-xl);
+  box-shadow: var(--p-overlay-modal-shadow);
 }
 
 .user-create-title {
   margin: 0 0 36px;
   text-align: center;
   font-size: 32px;
+  color: var(--p-text-color);
 }
 
 .form-columns {
@@ -35,21 +40,12 @@
 label {
   font-size: 16px;
   font-weight: 600;
+  color: var(--p-text-color);
 }
 
 input {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #cfcfcf;
-  border-radius: 8px;
   font-size: 16px;
-  transition: 0.2s;
-}
-
-input:focus {
-  outline: none;
-  border-color: #4d90fe;
-  box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.15);
 }
 
 fieldset {
@@ -57,38 +53,29 @@ fieldset {
   flex-direction: column;
   gap: 16px;
   padding: 20px;
-  border: 1px solid #d7d7d7;
-  border-radius: 12px;
+
+  border: 1px solid var(--p-content-border-color);
+  border-radius: var(--p-border-radius-lg);
+
+  background: transparent;
 }
 
 legend {
   padding: 0 10px;
   font-size: 18px;
   font-weight: 700;
+  color: var(--p-text-color);
 }
 
 .create-user-button {
   display: block;
   width: 260px;
   margin: 36px auto 0;
-  padding: 14px 24px;
-  border: none;
-  border-radius: 10px;
-  background: #1a3e3e;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.create-user-button:hover {
-  opacity: 0.9;
 }
 
 .validation-error {
   display: block;
   margin-top: 2px;
-  color: #e53935;
+  color: var(--p-red-500);
   font-size: 12px;
 }

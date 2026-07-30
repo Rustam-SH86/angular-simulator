@@ -6,7 +6,11 @@
   width: 100%;
   height: 120px;
 
-  background-color: #18121e80;
+  background: var(--p-primary-color);
+  color: var(--p-primary-contrast-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
@@ -28,7 +32,11 @@
 }
 
 .navigator {
-  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 25px;
+  
 }
 
 .navigator-items {
@@ -40,6 +48,7 @@
   margin: 0;
   padding: 0;
 }
+
 
 .navigator-items li {
   margin: 0;
@@ -63,4 +72,9 @@
   font-size: 50px;
   font-weight: 400;
   color: white;
+}
+
+.app-dark {
+  background-color: #18121e;
+  color: #ffffff;
 }

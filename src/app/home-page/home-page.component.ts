@@ -1,13 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../services/message.service';
 import { MessageType } from '../enums/message.enums';
-import { LoaderService } from '../services/loader.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faUsers, faShieldHalved, faTag, faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
@@ -19,10 +21,16 @@ export class HomePageComponent {
   protected readonly MessageType = MessageType;
   public messageService: MessageService = inject(MessageService);
 
+  protected readonly faUsers = faUsers;
+  protected readonly faShieldHalved = faShieldHalved;
+  protected readonly faTag = faTag;
+  protected readonly faPlay = faPlay;
+  protected readonly faStar = faStar;
+
   protected readonly destinations = [
     {
       image: '/image/popular_destinations/lake.svg',
-      ratingIcon: '/image/popular_destinations/rating-star.svg',
+      ratingIcon: faStar,
       ratingValue: '4.9',
       imageFooter: '/image/popular_destinations/lake-image_footer.svg',
       title: 'Озеро возле гор',
@@ -31,7 +39,7 @@ export class HomePageComponent {
     },
     {
       image: '/image/popular_destinations/night-mountains.svg',
-      ratingIcon: '/image/popular_destinations/rating-star.svg',
+      ratingIcon: faStar,
       ratingValue: '4.5',
       imageFooter: '/image/popular_destinations/night-mountains_footer.svg',
       title: 'Ночь в горах',
@@ -40,7 +48,7 @@ export class HomePageComponent {
     },
     {
       image: '/image/popular_destinations/stretching_mountain.svg',
-      ratingIcon: '/image/popular_destinations/rating-star.svg',
+      ratingIcon: faStar,
       ratingValue: '5',
       imageFooter: '/image/popular_destinations/stretching-mountains_footer.svg',
       title: 'Растяжка в горах',
@@ -93,19 +101,19 @@ export class HomePageComponent {
   protected readonly advantages = [
     {
       bg_icon: '/icons/advantages/background_people.svg',
-      icon: '/icons/advantages/people.svg',
+      icon: faUsers,
       title: 'Опытный гид',
       text: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       bg_icon: '/icons/advantages/background_shield.svg',
-      icon: '/icons/advantages/shield.svg',
+      icon: faShieldHalved,
       title: 'Безопасный поход',
       text: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       bg_icon: '/icons/advantages/background_price.svg',
-      icon: '/icons/advantages/price.svg',
+      icon: faTag,
       title: 'Лояльные цены',
       text: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },

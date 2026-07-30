@@ -25,3 +25,85 @@ ul {
 .no-scroll {
   overflow: hidden;
 }
+
+html.app-dark .body-section,
+html.app-dark .body-section section,
+html.app-dark .header,
+html.app-dark app-users-page,
+html.app-dark app-user-create,
+html.app-dark .users-page-section,
+html.app-dark .user-cards-conteiner {
+  background-color: #18121e;
+  color: #ffffff;
+}
+
+html.app-dark app-users-page,
+html.app-dark app-user-create {
+  display: block;
+}
+
+html.app-dark .travel-blog-card,
+html.app-dark .user-create-form,
+html.app-dark .user-card,
+html.app-dark .subscription {
+  background-color: #24202b;
+}
+
+html.app-dark .section-title,
+html.app-dark .user-page-title,
+html.app-dark .user-create-title,
+html.app-dark .travel-blog-title,
+html.app-dark .about-tur_description,
+html.app-dark .tur-description_text,
+html.app-dark .advantages-title,
+html.app-dark .advantages-text,
+html.app-dark .travel-blog-text,
+html.app-dark .read-article,
+html.app-dark .form-field label,
+html.app-dark .subscription,
+html.app-dark .subscription-title,
+html.app-dark .subscription-text,
+html.app-dark legend {
+  color: #ffffff;
+}
+
+html.app-dark .user-create-form input,
+html.app-dark .search-input,
+html.app-dark .subscription input {
+  background-color: #18121e;
+  color: #ffffff;
+  border-color: #5f6368;
+}
+
+html.app-dark .user-create-form input::placeholder,
+html.app-dark .search-input::placeholder,
+html.app-dark .subscription input::placeholder {
+  color: #9ca3af;
+}
+
+html.app-dark .user-create-form fieldset {
+  border-color: #5f6368;
+}
+
+html.app-dark .user-card .section-row {
+  color: #d1d5db;
+}
+
+html.app-dark .user-card .section-title::after {
+  background-color: #5f6368;
+}
+
+html.app-dark .user-card .coordinates {
+  background-color: #32303a;
+  color: #ffffff;
+}
+
+html.app-dark .subscription button {
+  background-color: #1a3e3e;
+  color: #ffffff;
+}
+
+html.app-dark app-footer {
+  display: block;
+  background-color: #18121e;
+}
