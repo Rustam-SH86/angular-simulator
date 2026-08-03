@@ -3,11 +3,13 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../interfaces/user-interface';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { BoldOnHoverDirective } from '../directives/bold-on-hover.directive';
+import { AnimatedGradientBorderDirective } from '../directives/animated-gradient-border.directive';
 
 
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule,InputTextModule,ButtonModule],
+  imports: [ReactiveFormsModule,InputTextModule,ButtonModule,BoldOnHoverDirective,AnimatedGradientBorderDirective],
   templateUrl: './user-create.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './user-create.component.scss',

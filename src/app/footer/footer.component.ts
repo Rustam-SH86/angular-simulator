@@ -21,6 +21,4 @@ export class FooterComponent {
   protected readonly  faVkontakte = faVk;
   protected readonly  faSkype = faSkype;
   protected readonly faChevronRight = faChevronRight;
-
-
 }

@@ -1,9 +1,4 @@
-<form
-  id="user-create-form"
-  class="user-create-form"
-  [formGroup]="userForm"
-  (ngSubmit)="onSubmit()"
->
+<form id="user-create-form" class="user-create-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <h2 class="user-create-title">Создание пользователя</h2>
 
   <div class="form-columns">
@@ -12,36 +7,29 @@
         <label for="user-name">Имя</label>
 
         <input
-        pInputText
+          pInputText
+          animatedGradientBorder
+          [GradientConfiguration]="{
+            delay: 1000,
+            colors: ['red', 'blue'],
+            thickness: 3,
+          }"
           id="user-name"
           type="text"
           formControlName="name"
           placeholder="Введите имя"
         />
 
-        @if (
-          userForm.controls.name.touched &&
-          userForm.controls.name.hasError('required')
-        ) {
+        @if (userForm.controls.name.touched && userForm.controls.name.hasError('required')) {
           <span class="validation-error">Имя обязательно</span>
         }
 
-        @if (
-          userForm.controls.name.touched &&
-          userForm.controls.name.hasError('minlength')
-        ) {
-          <span class="validation-error">
-            Имя должно содержать минимум 2 символа
-          </span>
+        @if (userForm.controls.name.touched && userForm.controls.name.hasError('minlength')) {
+          <span class="validation-error"> Имя должно содержать минимум 2 символа </span>
         }
 
-        @if (
-          userForm.controls.name.touched &&
-          userForm.controls.name.hasError('maxlength')
-        ) {
-          <span class="validation-error">
-            Имя должно содержать не более 100 символов
-          </span>
+        @if (userForm.controls.name.touched && userForm.controls.name.hasError('maxlength')) {
+          <span class="validation-error"> Имя должно содержать не более 100 символов </span>
         }
       </div>
 
@@ -50,6 +38,12 @@
 
         <input
           pInputText
+          animatedGradientBorder
+          [GradientConfiguration]="{
+            delay: 1000,
+            colors: ['red', 'blue'],
+            thickness: 3,
+          }"
           id="user-username"
           type="text"
           formControlName="username"
@@ -57,28 +51,21 @@
         />
 
         @if (
-          userForm.controls.username.touched &&
-          userForm.controls.username.hasError('required')
+          userForm.controls.username.touched && userForm.controls.username.hasError('required')
         ) {
           <span class="validation-error">Username обязателен</span>
         }
 
         @if (
-          userForm.controls.username.touched &&
-          userForm.controls.username.hasError('minlength')
+          userForm.controls.username.touched && userForm.controls.username.hasError('minlength')
         ) {
-          <span class="validation-error">
-            Username должен содержать минимум 3 символа
-          </span>
+          <span class="validation-error"> Username должен содержать минимум 3 символа </span>
         }
 
         @if (
-          userForm.controls.username.touched &&
-          userForm.controls.username.hasError('maxlength')
+          userForm.controls.username.touched && userForm.controls.username.hasError('maxlength')
         ) {
-          <span class="validation-error">
-            Username должен содержать не более 30 символов
-          </span>
+          <span class="validation-error"> Username должен содержать не более 30 символов </span>
         }
       </div>
 
@@ -86,37 +73,28 @@
         <label for="user-email">Эл. почта</label>
 
         <input
+          animatedGradientBorder
+          [GradientConfiguration]="{
+            delay: 1000,
+            colors: ['red', 'blue'],
+            thickness: 3,
+          }"
           id="user-email"
           type="email"
           formControlName="email"
           placeholder="Введите электронную почту"
         />
 
-        @if (
-          userForm.controls.email.touched &&
-          userForm.controls.email.hasError('required')
-        ) {
-          <span class="validation-error">
-            Электронная почта обязательна
-          </span>
+        @if (userForm.controls.email.touched && userForm.controls.email.hasError('required')) {
+          <span class="validation-error"> Электронная почта обязательна </span>
         }
 
-        @if (
-          userForm.controls.email.touched &&
-          userForm.controls.email.hasError('email')
-        ) {
-          <span class="validation-error">
-            Введите корректную электронную почту
-          </span>
+        @if (userForm.controls.email.touched && userForm.controls.email.hasError('email')) {
+          <span class="validation-error"> Введите корректную электронную почту </span>
         }
 
-        @if (
-          userForm.controls.email.touched &&
-          userForm.controls.email.hasError('maxlength')
-        ) {
-          <span class="validation-error">
-            Почта должна содержать не более 100 символов
-          </span>
+        @if (userForm.controls.email.touched && userForm.controls.email.hasError('maxlength')) {
+          <span class="validation-error"> Почта должна содержать не более 100 символов </span>
         }
       </div>
 
@@ -124,35 +102,28 @@
         <label for="user-phone">Телефон</label>
 
         <input
+          animatedGradientBorder
+          [GradientConfiguration]="{
+            delay: 1000,
+            colors: ['red', 'blue'],
+            thickness: 3,
+          }"
           id="user-phone"
           type="text"
           formControlName="phone"
           placeholder="Введите телефон"
         />
 
-        @if (
-          userForm.controls.phone.touched &&
-          userForm.controls.phone.hasError('required')
-        ) {
+        @if (userForm.controls.phone.touched && userForm.controls.phone.hasError('required')) {
           <span class="validation-error">Телефон обязателен</span>
         }
 
-        @if (
-          userForm.controls.phone.touched &&
-          userForm.controls.phone.hasError('minlength')
-        ) {
-          <span class="validation-error">
-            Телефон должен содержать минимум 10 символов
-          </span>
+        @if (userForm.controls.phone.touched && userForm.controls.phone.hasError('minlength')) {
+          <span class="validation-error"> Телефон должен содержать минимум 10 символов </span>
         }
 
-        @if (
-          userForm.controls.phone.touched &&
-          userForm.controls.phone.hasError('maxlength')
-        ) {
-          <span class="validation-error">
-            Телефон должен содержать не более 25 символов
-          </span>
+        @if (userForm.controls.phone.touched && userForm.controls.phone.hasError('maxlength')) {
+          <span class="validation-error"> Телефон должен содержать не более 25 символов </span>
         }
       </div>
 
@@ -160,20 +131,21 @@
         <label for="user-website">Веб-сайт</label>
 
         <input
-        pInputText
+          pInputText
+          animatedGradientBorder
+          [GradientConfiguration]="{
+            delay: 1000,
+            colors: ['red', 'blue'],
+            thickness: 3,
+          }"
           id="user-website"
           type="text"
           formControlName="website"
           placeholder="Введите веб-сайт"
         />
 
-        @if (
-          userForm.controls.website.touched &&
-          userForm.controls.website.hasError('maxlength')
-        ) {
-          <span class="validation-error">
-            Веб-сайт должен содержать не более 100 символов
-          </span>
+        @if (userForm.controls.website.touched && userForm.controls.website.hasError('maxlength')) {
+          <span class="validation-error"> Веб-сайт должен содержать не более 100 символов </span>
         }
       </div>
 
@@ -184,7 +156,13 @@
           <label for="company-name">Название компании</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="company-name"
             type="text"
             formControlName="name"
@@ -195,18 +173,14 @@
             userForm.controls.company.controls.name.touched &&
             userForm.controls.company.controls.name.hasError('required')
           ) {
-            <span class="validation-error">
-              Название компании обязательно
-            </span>
+            <span class="validation-error"> Название компании обязательно </span>
           }
 
           @if (
             userForm.controls.company.controls.name.touched &&
             userForm.controls.company.controls.name.hasError('maxlength')
           ) {
-            <span class="validation-error">
-              Название должно содержать не более 50 символов
-            </span>
+            <span class="validation-error"> Название должно содержать не более 50 символов </span>
           }
         </div>
 
@@ -214,7 +188,13 @@
           <label for="company-catch-phrase">Миссия</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="company-catch-phrase"
             type="text"
             formControlName="catchPhrase"
@@ -225,9 +205,7 @@
             userForm.controls.company.controls.catchPhrase.touched &&
             userForm.controls.company.controls.catchPhrase.hasError('maxlength')
           ) {
-            <span class="validation-error">
-              Миссия должна содержать не более 200 символов
-            </span>
+            <span class="validation-error"> Миссия должна содержать не более 200 символов </span>
           }
         </div>
 
@@ -235,7 +213,13 @@
           <label for="company-bs">Специализация</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="company-bs"
             type="text"
             formControlName="bs"
@@ -262,7 +246,13 @@
           <label for="address-city">Город</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="address-city"
             type="text"
             formControlName="city"
@@ -280,9 +270,7 @@
             userForm.controls.address.controls.city.touched &&
             userForm.controls.address.controls.city.hasError('maxlength')
           ) {
-            <span class="validation-error">
-              Город должен содержать не более 50 символов
-            </span>
+            <span class="validation-error"> Город должен содержать не более 50 символов </span>
           }
         </div>
 
@@ -290,7 +278,13 @@
           <label for="address-street">Улица</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="address-street"
             type="text"
             formControlName="street"
@@ -308,9 +302,7 @@
             userForm.controls.address.controls.street.touched &&
             userForm.controls.address.controls.street.hasError('maxlength')
           ) {
-            <span class="validation-error">
-              Улица должна содержать не более 100 символов
-            </span>
+            <span class="validation-error"> Улица должна содержать не более 100 символов </span>
           }
         </div>
 
@@ -318,7 +310,13 @@
           <label for="address-suite">Офис</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="address-suite"
             type="text"
             formControlName="suite"
@@ -329,9 +327,7 @@
             userForm.controls.address.controls.suite.touched &&
             userForm.controls.address.controls.suite.hasError('maxlength')
           ) {
-            <span class="validation-error">
-              Офис должен содержать не более 50 символов
-            </span>
+            <span class="validation-error"> Офис должен содержать не более 50 символов </span>
           }
         </div>
 
@@ -339,7 +335,13 @@
           <label for="address-zipcode">Индекс</label>
 
           <input
-          pInputText
+            pInputText
+            animatedGradientBorder
+            [GradientConfiguration]="{
+              delay: 1000,
+              colors: ['red', 'blue'],
+              thickness: 3,
+            }"
             id="address-zipcode"
             type="text"
             formControlName="zipcode"
@@ -357,18 +359,14 @@
             userForm.controls.address.controls.zipcode.touched &&
             userForm.controls.address.controls.zipcode.hasError('minlength')
           ) {
-            <span class="validation-error">
-              Индекс должен содержать минимум 5 символов
-            </span>
+            <span class="validation-error"> Индекс должен содержать минимум 5 символов </span>
           }
 
           @if (
             userForm.controls.address.controls.zipcode.touched &&
             userForm.controls.address.controls.zipcode.hasError('maxlength')
           ) {
-            <span class="validation-error">
-              Индекс должен содержать не более 10 символов
-            </span>
+            <span class="validation-error"> Индекс должен содержать не более 10 символов </span>
           }
         </div>
 
@@ -379,7 +377,13 @@
             <label for="geo-lat">Широта</label>
 
             <input
-            pInputText
+              pInputText
+              animatedGradientBorder
+              [GradientConfiguration]="{
+                delay: 1000,
+                colors: ['red', 'blue'],
+                thickness: 3,
+              }"
               id="geo-lat"
               type="text"
               formControlName="lat"
@@ -391,7 +395,13 @@
             <label for="geo-lng">Долгота</label>
 
             <input
-            pInputText
+              pInputText
+              animatedGradientBorder
+              [GradientConfiguration]="{
+                delay: 1000,
+                colors: ['red', 'blue'],
+                thickness: 3,
+              }"
               id="geo-lng"
               type="text"
               formControlName="lng"
@@ -403,12 +413,7 @@
     </div>
   </div>
 
-  <button
-  pButton
-    id="create-user-button"
-    class="create-user-button"
-    type="submit"
-  >
+  <button pButton boldOnHover id="create-user-button" class="create-user-button" type="submit">
     Создать пользователя
   </button>
 </form>

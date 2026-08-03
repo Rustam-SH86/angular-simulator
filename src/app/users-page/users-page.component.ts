@@ -6,7 +6,7 @@ import { UserCreateComponent } from '../user-create/user-create.component';
 import { IUser } from '../interfaces/user-interface';
 import { UserFilterComponent } from '../user-filter/user-filter.component';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
-import { ThemeService } from '../services/theme.service';
+import { PluralPipe } from '../pipes/plural.pipe';
 
 @Component({
   selector: 'app-users-page',
@@ -14,8 +14,8 @@ import { ThemeService } from '../services/theme.service';
     CommonModule,
     UserCardComponent,
     UserCreateComponent,
-    UserCreateComponent,
     UserFilterComponent,
+    PluralPipe
   ],
   templateUrl: './users-page.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
