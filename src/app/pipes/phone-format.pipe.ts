@@ -7,6 +7,10 @@ export class PhoneFormatPipe implements PipeTransform {
   transform(phone: string, format: string): string {
     const clearPhone = phone.replace(/\D/g, '');
 
+    if(clearPhone.length != 12){
+      return phone
+    }
+
     if (format == 'compact') {
       return '+' + clearPhone;
     }
@@ -45,6 +49,6 @@ export class PhoneFormatPipe implements PipeTransform {
         clearPhone.slice(10, 12)
       );
     }
-    return clearPhone;
+     return phone
   }
 }
