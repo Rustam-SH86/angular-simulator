@@ -107,3 +107,17 @@ html.app-dark app-footer {
   display: block;
   background-color: #18121e;
 }
+
+@keyframes gradientBorderAnimation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.animated-gradient-border {
+  animation: gradientBorderAnimation 2s linear infinite;
+}

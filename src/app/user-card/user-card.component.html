@@ -1,12 +1,12 @@
-<p-card styleClass="user-card">
+<p-card 
+styleClass="user-card"
+animatedGradientBorder
+[GradientConfiguration]="{ delay: 1000, colors: ['red', 'blue'], thickness: 3 }">
   <div class="user-header">
     <h2 class="user-name">
-      {{ user.name || 'Неизвестно' }}
+      {{ user.name || 'Неизвестно' | uppercase }}
     </h2>
-
-    <p class="user-username">
-      @{{ user.username || 'Неизвестно' }}
-    </p>
+    <p class="user-username">@{{ user.username || 'Неизвестно' }}</p>
   </div>
 
   <section class="user-section">
@@ -22,14 +22,14 @@
     <div class="section-row">
       <span class="label">Телефон:</span>
       <span class="value">
-        {{ user.phone || 'Неизвестно' }}
+        {{ user.phone | phoneFormat : 'masked'}}
       </span>
     </div>
 
     <div class="section-row">
       <span class="label">Веб-сайт:</span>
       <span class="value">
-        {{ user.website || 'Неизвестно' }}
+        {{ user.website || 'Неизвестно'  }}
       </span>
     </div>
   </section>
@@ -105,14 +105,15 @@
     </div>
   </section>
 
-<button
-  pButton
-  id="delete-user-{{ user.id }}"
-  type="button"
-  severity="danger"
-  class="delete-user-button"
-  (click)="onDeleteUser()"
->
-  Удалить пользователя
-</button>
+  <button
+    pButton
+    boldOnHover
+    id="delete-user-{{ user.id }}"
+    type="button"
+    severity="danger"
+    class="delete-user-button"
+    (click)="onDeleteUser()"
+  >
+    Удалить пользователя
+  </button>
 </p-card>
