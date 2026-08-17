@@ -42,6 +42,11 @@ export class HeaderComponent {
       path: 'users',
       exact: false,
     },
+    {
+      name: ' Посты',
+      path: 'posts',
+      exact: false,
+    },
   ];
 
   public onColorModeChange(checked: boolean): void {

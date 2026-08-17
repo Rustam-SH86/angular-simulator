@@ -1,0 +1,18 @@
+<form class="create-post-form" #postForm="ngForm" (ngSubmit)="createPost()">
+  <label for="title">Title</label>
+  <input id="title" name="title" type="text" [(ngModel)]="newPost.title" required />
+
+  <label for="body">Body</label>
+  <textarea id="body" name="body" [(ngModel)]="newPost.body" required></textarea>
+
+  <label for="tags">Tags, separated by commas</label>
+  <input id="tags" name="tags" type="text" [(ngModel)]="tagsText" />
+
+  <label for="views">Views</label>
+  <input id="views" name="views" type="number" min="0" [(ngModel)]="newPost.views" required />
+
+  <label for="userId">User ID</label>
+  <input id="userId" name="userId" type="number" min="1" [(ngModel)]="newPost.userId" required />
+
+  <button type="submit" [disabled]="postForm.invalid">Create Post</button>
+</form>
