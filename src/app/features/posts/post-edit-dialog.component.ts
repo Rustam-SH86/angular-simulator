@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input,output,Output, } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { IPost } from './post';
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-post-edit-dialog',
@@ -12,8 +11,36 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './post-edit-dialog.component.scss',
 })
 export class PostEditDialogComponent {
-  @Input() post: IPost | null = null;
+  private _post: IPost | null = null;
+
   @Input() visible = false;
+
   @Output() visibleChange = new EventEmitter<boolean>();
-  @Output() save  = new EventEmitter<IPost>();
+  @Output() save = new EventEmitter<IPost>();
+
+  public tagsText = '';
+
+  @Input()
+  set post(value: IPost | null) {
+    this._post = value;
+    this.tagsText = value?.tags?.join(', ') ?? '';
+  }
+
+  get post(): IPost | null {
+    return this._post;
+  }
+
+  onSave(): void {
+    if (!this.post) {
+      return;
+    }
+
+    this.save.emit({
+      ...this.post,
+      tags: this.tagsText
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter(Boolean),
+    });
+  }
 }

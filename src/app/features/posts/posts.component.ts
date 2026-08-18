@@ -90,7 +90,6 @@ export class PostsComponent {
   onPageChange(event: TableLazyLoadEvent): void {
     this.skip = event.first ?? 0;
     this.limit = event.rows ?? this.limit;
-
     this.loadPosts();
   }
 
@@ -102,7 +101,6 @@ export class PostsComponent {
     if (updatedPost.id === undefined) {
       return;
     }
-
     this.postApiService.updatePost(updatedPost.id, updatedPost).subscribe({
       next: (response) => {
         this.posts = this.posts.map((post) => (post.id === response.id ? response : post));

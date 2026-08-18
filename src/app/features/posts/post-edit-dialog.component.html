@@ -6,40 +6,23 @@
   [style]="{ width: '500px' }"
 >
   @if (post) {
-    <form class="edit-post-form">
+    <form class="edit-post-form" (ngSubmit)="onSave()">
       <div class="form-field">
         <label for="edit-title">Title</label>
-        <input
-          id="edit-title"
-          name="title"
-          type="text"
-          [(ngModel)]="post.title"
-        />
+        <input id="edit-title" name="title" type="text" [(ngModel)]="post.title" />
       </div>
 
       <div class="form-field">
         <label for="edit-tags">Tags</label>
-        <input
-          id="edit-tags"
-          name="tags"
-          type="text"
-          [value]="post.tags?.join(', ')"
-        />
+        <input id="edit-tags" name="tags" type="text" [(ngModel)]="tagsText" />
       </div>
 
       <div class="form-field">
         <label for="edit-views">Views</label>
-        <input
-          id="edit-views"
-          name="views"
-          type="number"
-          [(ngModel)]="post.views"
-        />
+        <input id="edit-views" name="views" type="number" [(ngModel)]="post.views" />
       </div>
 
-      <button type="button" (click)="save.emit(post)">
-        Save changes
-      </button>
+      <button type="submit">Save changes</button>
     </form>
   }
 </p-dialog>
