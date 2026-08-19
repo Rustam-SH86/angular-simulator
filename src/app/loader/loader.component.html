@@ -1,6 +1,4 @@
-  @if (loader$ | async ) {
-    <div class="loader-container">
-      <div class="overlay"></div>
-      <div class="loader"></div>
-    </div>
-  }
+<div *ngIf="loader$ | async" class="loader-container">
+  <div class="overlay"></div>
+  <div class="loader"></div>
+</div>

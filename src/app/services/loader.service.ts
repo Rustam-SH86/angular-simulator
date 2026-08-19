@@ -7,14 +7,19 @@ import { BehaviorSubject } from 'rxjs';
 export class LoaderService {
   private loaderSubject = new BehaviorSubject<boolean>(false);
   public loader$ = this.loaderSubject.asObservable();
+  private loadingCount = 0;
 
   showLoader() {
+    this.loadingCount++;
     document.body.classList.add('no-scroll');
     this.loaderSubject.next(true);
   }
 
   hideLoader() {
-    document.body.classList.remove('no-scroll');
-    this.loaderSubject.next(false);
+    this.loadingCount = Math.max(0, this.loadingCount - 1);
+    if (this.loadingCount === 0) {
+      document.body.classList.remove('no-scroll');
+      this.loaderSubject.next(false);
+    }
   }
 }

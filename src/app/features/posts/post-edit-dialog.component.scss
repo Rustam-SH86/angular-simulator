@@ -1,0 +1,50 @@
+.edit-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 8px 2px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: #243746;
+}
+
+.form-field input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+
+  font: inherit;
+  border: 1px solid #b9c8d3;
+  border-radius: 8px;
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: #18b985;
+  box-shadow: 0 0 0 3px rgba(24, 185, 133, 0.18);
+}
+
+.edit-post-form button {
+  align-self: flex-end;
+  padding: 10px 18px;
+
+  color: #fff;
+  font-weight: 600;
+
+  background: #18b985;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-post-form button:hover {
+  background: #12976d;
+}

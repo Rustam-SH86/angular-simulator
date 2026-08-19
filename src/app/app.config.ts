@@ -10,8 +10,9 @@ import { providePrimeNG } from 'primeng/config';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import Aura from '@primeuix/themes/aura';
 import { routes } from './app.routes';
-import { loggingInterceptor } from './logging.interceptor';
-import {serverErrorInterceptor} from './server-error.interceptor';
+import { loggingInterceptor } from './interceptors/logging.interceptor';
+import {serverErrorInterceptor} from './interceptors/server-error.interceptor';
+import { loaderInterceptor } from './interceptors/loader.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideZoneChangeDetection(),
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([loggingInterceptor,serverErrorInterceptor])),
+    provideHttpClient(withInterceptors([loggingInterceptor,serverErrorInterceptor,loaderInterceptor])),
     providePrimeNG({
       theme: {
         preset: Aura,
