@@ -8,6 +8,7 @@
 
   background: var(--p-primary-color);
   color: var(--p-primary-contrast-color);
+
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -34,21 +35,21 @@
 .navigator {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: flex-start;
+
   gap: 25px;
-  
 }
 
 .navigator-items {
   display: flex;
   align-items: center;
-  gap: 80px;
+  gap: 40px;
 
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 
 .navigator-items li {
   margin: 0;
@@ -64,6 +65,54 @@
 }
 
 .navigator a.active {
+  color: #f2be22;
+}
+
+.auth-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-left: 20px;
+}
+
+.auth-user span {
+  color: white;
+  font-family: 'Nunito Sans';
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.auth-user button {
+  border: none;
+  border-radius: 6px;
+
+  padding: 8px 14px;
+
+  background: white;
+  color: var(--p-primary-color);
+
+  font-family: 'Nunito Sans';
+  font-weight: 700;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.auth-user button:hover {
+  opacity: 0.9;
+}
+
+.login-link {
+  color: white;
+  text-decoration: none;
+
+  font-family: 'Nunito Sans';
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.login-link.active {
   color: #f2be22;
 }
 

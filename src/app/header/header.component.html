@@ -1,6 +1,7 @@
 <header class="header">
   <div class="logo">
     <img class="logo-image" src="/icons/logo.png" alt="РУМТИБЕТ" />
+
     <span class="logo-title">
       {{ companyName }}
     </span>
@@ -8,12 +9,14 @@
 
   <nav class="navigator">
     @if (themeState$ | async; as state) {
-      <p-toggleswitch class="toggleswitch"
+      <p-toggleswitch
+        class="toggleswitch"
         [ngModel]="state.colorMode === 'dark'"
         (ngModelChange)="onColorModeChange($event)"
       ></p-toggleswitch>
 
-      <p-selectbutton class="selectbutton"
+      <p-selectbutton
+        class="selectbutton"
         [options]="themeOptions"
         optionLabel="label"
         optionValue="value"
@@ -21,19 +24,42 @@
         (ngModelChange)="onThemeChange($event)"
       ></p-selectbutton>
     }
+
     <ul class="navigator-items">
       @for (item of headerItems; track $index) {
         <li>
           <a
             [routerLink]="item.path"
             routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: item.exact }"
+            [routerLinkActiveOptions]="{ exact: item.exact === true }"
           >
-            {{ item.name}}
+            {{ item.name }}
           </a>
         </li>
       }
     </ul>
+
+@if (currentUser$ | async; as user) {
+  <div class="auth-user">
+    <span>
+      {{ user.username }}
+    </span>
+
+    <button
+      type="button"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+  </div>
+} @else {
+  <a
+    routerLink="/login"
+    routerLinkActive="active"
+  >
+    Логин
+  </a>
+}
   </nav>
 
   <div class="header-spacer"></div>
