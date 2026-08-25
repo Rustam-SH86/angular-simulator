@@ -9,6 +9,7 @@ export interface IAuthResponse {
   email: string;
   firstName: string;
   lastName: string;
+  role: string;
   gender: string;
   image: string;
   accessToken: string;
