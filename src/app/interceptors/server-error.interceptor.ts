@@ -1,8 +1,5 @@
 import { inject } from '@angular/core';
-import {
-  HttpErrorResponse,
-  HttpInterceptorFn,
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { MessageService } from '../services/message.service';
 
@@ -15,6 +12,8 @@ export const serverErrorInterceptor: HttpInterceptorFn = (req, next) => {
 
       if (error.status === 0) {
         text = 'Network error. Please check your connection.';
+      } else if (error.status === 400 && req.url.includes('/auth/login')) {
+        text = 'Invalid username or password.';
       } else if (error.status === 400) {
         text = 'Invalid request.';
       } else if (error.status === 404) {
