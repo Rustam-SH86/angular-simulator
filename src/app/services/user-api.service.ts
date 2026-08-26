@@ -9,7 +9,7 @@ import { IUser } from '../interfaces/user-interface';
 export class UserApiService {
   private http: HttpClient = inject(HttpClient);
 
-  public getUsers(): Observable<IUser[]> {
+  getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>('https://jsonplaceholder.typicode.com/users');
   }
 }

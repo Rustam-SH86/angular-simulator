@@ -15,12 +15,12 @@ export class LoginComponent {
   private route = inject(ActivatedRoute);
   private messageService = inject(MessageService);
 
-  public loginForm = new FormGroup({
+  loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
 
-  public login(): void {
+  login(): void {
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 

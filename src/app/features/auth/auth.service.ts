@@ -1,7 +1,7 @@
-import { inject, Injectable, Pipe } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ILoginRequest, IAuthResponse, IRefreshTokenResponse } from './auth.interface';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, pipe, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class AuthService {
   private readonly REFRESH_URL = 'https://dummyjson.com/auth/refresh';
   private readonly ME_URL = 'https://dummyjson.com/auth/me';
 
-  public login(data: ILoginRequest): Observable<IAuthResponse> {
+  login(data: ILoginRequest): Observable<IAuthResponse> {
     return this.http.post<IAuthResponse>(this.LOGIN_URL, data).pipe(
       tap((response) => {
         this.saveToken(response.accessToken, response.refreshToken);
@@ -24,28 +24,28 @@ export class AuthService {
   }
 
   private currentUserSubject = new BehaviorSubject<IAuthResponse | null>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
+  currentUser$ = this.currentUserSubject.asObservable();
 
-  public saveToken(accessToken: string, refreshToken: string): void {
+  saveToken(accessToken: string, refreshToken: string): void {
     localStorage.setItem(this.ACCESS_TOKEN_KEY, accessToken);
     localStorage.setItem(this.REFRESH_TOKEN_KEY, refreshToken);
   }
 
-  public getAccessToken(): string | null {
+  getAccessToken(): string | null {
     return localStorage.getItem(this.ACCESS_TOKEN_KEY);
   }
 
-  public logout(): void {
+  logout(): void {
     localStorage.removeItem(this.ACCESS_TOKEN_KEY);
     localStorage.removeItem(this.REFRESH_TOKEN_KEY);
     this.currentUserSubject.next(null);
   }
 
-  public getRefreshToken(): string | null {
+  getRefreshToken(): string | null {
     return localStorage.getItem(this.REFRESH_TOKEN_KEY);
   }
 
-  public refreshToken(): Observable<IRefreshTokenResponse> {
+  refreshToken(): Observable<IRefreshTokenResponse> {
     const refreshToken = this.getRefreshToken();
 
     return this.http
@@ -59,7 +59,7 @@ export class AuthService {
       );
   }
 
-  public getCurrentUser(): Observable<IAuthResponse> {
+  getCurrentUser(): Observable<IAuthResponse> {
     return this.http.get<IAuthResponse>(this.ME_URL).pipe(
       tap((user) => {
         this.currentUserSubject.next(user);
@@ -67,7 +67,7 @@ export class AuthService {
     );
   }
 
-  public initializeAuth(): Observable<IAuthResponse | null> {
+  initializeAuth(): Observable<IAuthResponse | null> {
     const token = this.getAccessToken();
 
     if (!token) {

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { IPost } from './post';
 import { FormsModule } from '@angular/forms';
 import { PostApiService } from './post-api.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-post-create',
@@ -18,9 +17,9 @@ export class PostCreateComponent {
   private postApiService = inject(PostApiService);
   private router = inject(Router);
   private http = inject(HttpClient);
-  public tagsText = '';
+  tagsText = '';
 
-  public newPost: Omit<IPost, 'id'> = {
+  newPost: Omit<IPost, 'id'> = {
     title: '',
     body: '',
     tags: [],

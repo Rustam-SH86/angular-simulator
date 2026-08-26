@@ -8,10 +8,7 @@ import {
 
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {
-  provideHttpClient,
-  withInterceptors,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
@@ -58,9 +55,7 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => {
       const authService = inject(AuthService);
 
-      return firstValueFrom(
-        authService.initializeAuth()
-      );
+      return firstValueFrom(authService.initializeAuth());
     }),
   ],
 };

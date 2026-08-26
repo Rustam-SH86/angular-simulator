@@ -123,12 +123,8 @@
         @for (item of advantages; track $index) {
           <div class="advantages">
             <div class="advantages-icons">
-              <img class="back-adv-icon" [src]="item.bg_icon" />
-              <fa-icon
-              class="front-adv-icon"
-              [icon] = "item.icon"
-              >
-              </fa-icon>
+              <img class="back-adv-icon" [src]="item.bg_icon" alt="" />
+              <fa-icon class="front-adv-icon" [icon]="item.icon"> </fa-icon>
             </div>
             <div class="advantages-content">
               <h3 class="advantages-title">{{ item.title }}</h3>
@@ -160,16 +156,13 @@
     <div class="popular-destinations_content">
       @for (item of destinations; track $index) {
         <div class="popular-destinations-card">
-          <img class="destination-image" [src]="item.image" />
+          <img class="destination-image" [src]="item.image" [alt]="item.title" />
           <div class="rating">
-            <fa-icon
-            class="raiting-icon"
-            [icon] = "item.ratingIcon"
-            ></fa-icon>
+            <fa-icon class="raiting-icon" [icon]="item.ratingIcon"></fa-icon>
             <span class="rating-value">{{ item.ratingValue }}</span>
           </div>
           <div class="destination-image_footer">
-            <img class="image_footer" [src]="item.imageFooter" />
+            <img class="image_footer" [src]="item.imageFooter" alt="" />
             <div class="title-section">
               <h2 class="destination-title">{{ item.title }}</h2>
               <p class="destination-subtitle">{{ item.subtitle }}</p>
@@ -194,7 +187,7 @@
     <div class="travel-blog-content">
       @for (item of travelBlog; track $index) {
         <div class="travel-blog-card">
-          <img class="travel-blog-image" [src]="item.image" />
+          <img class="travel-blog-image" [src]="item.image" [alt]="item.title" />
           <div class="travel-blog-description">
             <h2 class="travel-blog-title">{{ item.title }}</h2>
             <p class="travel-blog-text">{{ item.description }}</p>

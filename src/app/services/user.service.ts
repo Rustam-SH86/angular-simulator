@@ -18,17 +18,17 @@ export class UserService {
   private readonly USERS_STORAGE_KEY = 'users';
 
   private usersSubject = new BehaviorSubject<IUser[]>([]);
-  public users$ = this.usersSubject.asObservable();
+  users$ = this.usersSubject.asObservable();
 
-  public setUsers(users: IUser[]): void {
+  setUsers(users: IUser[]): void {
     this.usersSubject.next(users);
   }
 
-  public getUsers(): Observable<IUser[]> {
+  getUsers(): Observable<IUser[]> {
     return this.users$;
   }
 
-  public loadUsers(): Observable<IUser[]> {
+  loadUsers(): Observable<IUser[]> {
     this.loaderService.showLoader();
 
     const storedUsers = this.localStorageService.getValue<IUser[]>(this.USERS_STORAGE_KEY);
@@ -59,7 +59,7 @@ export class UserService {
     );
   }
 
-  public deleteUser(id: number): void {
+  deleteUser(id: number): void {
     const users = this.usersSubject.value;
     const updatedUsers = users.filter((user) => user.id !== id);
     this.usersSubject.next(updatedUsers);
@@ -67,7 +67,7 @@ export class UserService {
     this.localStorageService.setValue(this.USERS_STORAGE_KEY, updatedUsers);
   }
 
-  public addUser(user: IUser): void {
+  addUser(user: IUser): void {
     const updatedUsers = [...this.usersSubject.value, user];
 
     this.usersSubject.next(updatedUsers);

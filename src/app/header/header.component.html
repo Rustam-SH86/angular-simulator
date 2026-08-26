@@ -39,27 +39,17 @@
       }
     </ul>
 
-@if (currentUser$ | async; as user) {
-  <div class="auth-user">
-    <span>
-      {{ user.username }}
-    </span>
+    @if (currentUser$ | async; as user) {
+      <div class="auth-user">
+        <span>
+          {{ user.username }}
+        </span>
 
-    <button
-      type="button"
-      (click)="logout()"
-    >
-      Logout
-    </button>
-  </div>
-} @else {
-  <a
-    routerLink="/login"
-    routerLinkActive="active"
-  >
-    Логин
-  </a>
-}
+        <button type="button" (click)="logout()">Logout</button>
+      </div>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active"> Логин </a>
+    }
   </nav>
 
   <div class="header-spacer"></div>

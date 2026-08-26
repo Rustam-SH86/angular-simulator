@@ -32,7 +32,7 @@ export class ThemeService {
   private readonly localStorageService = inject(LocalStorageService);
   private readonly THEME_STORAGE_KEY = 'theme-state';
   private readonly themeStateSubject = new BehaviorSubject<IThemeState>(this.getInitialState());
-  public readonly themeState$ = this.themeStateSubject.asObservable();
+  readonly themeState$ = this.themeStateSubject.asObservable();
 
   constructor() {
     const initialState = this.themeStateSubject.value;
@@ -52,7 +52,7 @@ export class ThemeService {
     this.localStorageService.setValue(this.THEME_STORAGE_KEY, state);
   }
 
-  public setTheme(theme: AppTheme): void {
+  setTheme(theme: AppTheme): void {
     const currentState = this.themeStateSubject.value;
 
     const newState: IThemeState = {
@@ -64,7 +64,7 @@ export class ThemeService {
     this.applyTheme(theme);
   }
 
-  public setColorMode(colorMode: ColorMode): void {
+  setColorMode(colorMode: ColorMode): void {
     const currentState = this.themeStateSubject.value;
 
     const newState: IThemeState = {

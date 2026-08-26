@@ -1,25 +1,31 @@
-import { Directive, ElementRef, HostListener, Input, OnDestroy, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  inject,
+  Input,
+  OnDestroy,
+  Renderer2,
+} from '@angular/core';
 
-interface GradientConfiguration {
+interface IGradientConfiguration {
   delay?: number;
   colors?: string[];
   thickness?: number;
 }
 
 @Directive({
-  selector: '[animatedGradientBorder]',
+  selector: '[appAnimatedGradientBorder]',
 })
-export class AnimatedGradientBorderDirective implements OnDestroy   {
+export class AnimatedGradientBorderDirective implements OnDestroy {
   ngOnDestroy(): void {
-  this.clearTimer();
-}
-  @Input() GradientConfiguration: GradientConfiguration = {};
-  private timer: ReturnType<typeof setTimeout> | null = null;
+    this.clearTimer();
+  }
 
-  constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-  ) {}
+  @Input() GradientConfiguration: IGradientConfiguration = {};
+  private timer: ReturnType<typeof setTimeout> | null = null;
+  private elementRef: ElementRef = inject(ElementRef);
+  private renderer: Renderer2 = inject(Renderer2);
 
   @HostListener('mouseenter')
   onEnter(): void {
@@ -41,7 +47,6 @@ export class AnimatedGradientBorderDirective implements OnDestroy   {
 
       this.renderer.addClass(element, 'animated-gradient-border');
       this.timer = null;
-    
     }, delay);
   }
 

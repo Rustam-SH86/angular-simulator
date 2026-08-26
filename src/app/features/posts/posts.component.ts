@@ -5,7 +5,7 @@ import { PostApiService } from './post-api.service';
 import { IPost } from './post';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { MenuItem } from 'primeng/api';
-import { Router,RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PostEditDialogComponent } from './post-edit-dialog.component';
 
 @Component({
@@ -19,8 +19,8 @@ export class PostsComponent {
   private postApiService = inject(PostApiService);
   private cd = inject(ChangeDetectorRef);
   private router = inject(Router);
-  public editPost: IPost | null = null;
-  public editDialogVisible = false;
+  editPost: IPost | null = null;
+  editDialogVisible = false;
 
   selectedPost: IPost | null = null;
 

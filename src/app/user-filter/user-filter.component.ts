@@ -1,20 +1,19 @@
-import { Component, DestroyRef, inject, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, DestroyRef, inject, output } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounce, debounceTime, distinct, distinctUntilChanged, map } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs';
 
 @Component({
   selector: 'app-user-filter',
   imports: [ReactiveFormsModule],
   templateUrl: './user-filter.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './user-filter.component.scss',
 })
 export class UserFilterComponent {
   private destroyRef = inject(DestroyRef);
-  public filterChange = output<string>();
+  filterChange = output<string>();
 
-  public searchControl = new FormControl<string>('', {
+  searchControl = new FormControl<string>('', {
     nonNullable: true,
   });
 

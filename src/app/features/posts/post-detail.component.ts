@@ -11,5 +11,5 @@ import { IPost } from './post';
 export class PostDetailComponent {
   private route = inject(ActivatedRoute);
 
-  public post = this.route.snapshot.data['post'] as IPost;
+  post = this.route.snapshot.data['post'] as IPost;
 }
