@@ -1,7 +1,7 @@
 import { inject, Injectable, Pipe } from '@angular/core';
 import { ILoginRequest, IAuthResponse, IRefreshTokenResponse } from './auth.interface';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, pipe, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, pipe, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,8 @@ export class AuthService {
     return this.http.post<IAuthResponse>(this.LOGIN_URL, data).pipe(
       tap((response) => {
         this.saveToken(response.accessToken, response.refreshToken);
-        this.currentUserSubject.next(response);
       }),
+      switchMap(() => this.getCurrentUser()),
     );
   }
 
@@ -68,12 +68,12 @@ export class AuthService {
   }
 
   public initializeAuth(): Observable<IAuthResponse | null> {
-  const token = this.getAccessToken();
+    const token = this.getAccessToken();
 
-  if (!token) {
-    return of(null);
+    if (!token) {
+      return of(null);
+    }
+
+    return this.getCurrentUser();
   }
-
-  return this.getCurrentUser();
-}
 }
