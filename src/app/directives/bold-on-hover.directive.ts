@@ -1,20 +1,19 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[boldOnHover]',
+  selector: '[appBoldOnHover]',
 })
 export class BoldOnHoverDirective {
-  @HostBinding('style.fontWeight') 
+  @HostBinding('style.fontWeight')
   fontWeight = 'normal';
-
 
   @HostListener('mouseenter')
   onEnter() {
-    this.fontWeight = 'bold'
-  };
+    this.fontWeight = 'bold';
+  }
 
   @HostListener('mouseleave')
   onLeave() {
-    this.fontWeight = 'normal'
+    this.fontWeight = 'normal';
   }
 }

@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { inject } from '@angular/core';
 import { take, map } from 'rxjs';
 
-export const adminGuard: CanActivateFn = (_route, _state) => {
+export const adminGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
 

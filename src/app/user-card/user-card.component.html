@@ -1,7 +1,8 @@
-<p-card 
-styleClass="user-card"
-animatedGradientBorder
-[GradientConfiguration]="{ delay: 1000, colors: ['red', 'blue'], thickness: 3 }">
+<p-card
+  styleClass="user-card"
+  appAnimatedGradientBorder
+  [GradientConfiguration]="{ delay: 1000, colors: ['red', 'blue'], thickness: 3 }"
+>
   <div class="user-header">
     <h2 class="user-name">
       {{ user.name || 'Неизвестно' | uppercase }}
@@ -22,14 +23,14 @@ animatedGradientBorder
     <div class="section-row">
       <span class="label">Телефон:</span>
       <span class="value">
-        {{ user.phone | phoneFormat : 'masked'}}
+        {{ user.phone | phoneFormat: 'masked' }}
       </span>
     </div>
 
     <div class="section-row">
       <span class="label">Веб-сайт:</span>
       <span class="value">
-        {{ user.website || 'Неизвестно'  }}
+        {{ user.website || 'Неизвестно' }}
       </span>
     </div>
   </section>
@@ -107,7 +108,7 @@ animatedGradientBorder
 
   <button
     pButton
-    boldOnHover
+    appBoldOnHover
     id="delete-user-{{ user.id }}"
     type="button"
     severity="danger"

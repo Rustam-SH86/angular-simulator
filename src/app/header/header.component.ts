@@ -30,17 +30,17 @@ export class HeaderComponent {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
-  public readonly themeState$ = this.themeService.themeState$;
+  readonly themeState$ = this.themeService.themeState$;
 
-  public readonly currentUser$ = this.authService.currentUser$;
+  readonly currentUser$ = this.authService.currentUser$;
 
-  public readonly themeOptions = [
+  readonly themeOptions = [
     { label: 'Aura', value: 'aura' },
     { label: 'Lara', value: 'lara' },
     { label: 'Nora', value: 'nora' },
   ];
 
-  public headerItems = [
+  headerItems = [
     {
       name: 'Главная',
       path: '',
@@ -58,7 +58,7 @@ export class HeaderComponent {
     },
   ];
 
-  public onColorModeChange(checked: boolean): void {
+  onColorModeChange(checked: boolean): void {
     console.log('Toggle value:', checked);
 
     const colorMode = checked ? 'dark' : 'light';
@@ -66,11 +66,11 @@ export class HeaderComponent {
     this.themeService.setColorMode(colorMode);
   }
 
-  public onThemeChange(theme: AppTheme): void {
+  onThemeChange(theme: AppTheme): void {
     this.themeService.setTheme(theme);
   }
 
-  public logout(): void {
+  logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
   }

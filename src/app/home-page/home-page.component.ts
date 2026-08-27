@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MessageService } from '../services/message.service';
 import { MessageType } from '../enums/message.enums';
@@ -9,7 +9,6 @@ import { faUsers, faShieldHalved, faTag, faPlay, faStar } from '@fortawesome/fre
   selector: 'app-home-page',
   imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
@@ -19,7 +18,7 @@ export class HomePageComponent {
   protected selectedParticipants = '';
   protected inputText = '';
   protected readonly MessageType = MessageType;
-  public messageService: MessageService = inject(MessageService);
+  messageService: MessageService = inject(MessageService);
 
   protected readonly faUsers = faUsers;
   protected readonly faShieldHalved = faShieldHalved;

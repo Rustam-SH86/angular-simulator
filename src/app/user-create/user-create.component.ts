@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../interfaces/user-interface';
 import { InputTextModule } from 'primeng/inputtext';
@@ -6,21 +6,25 @@ import { ButtonModule } from 'primeng/button';
 import { BoldOnHoverDirective } from '../directives/bold-on-hover.directive';
 import { AnimatedGradientBorderDirective } from '../directives/animated-gradient-border.directive';
 
-
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule,InputTextModule,ButtonModule,BoldOnHoverDirective,AnimatedGradientBorderDirective],
+  imports: [
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
+    BoldOnHoverDirective,
+    AnimatedGradientBorderDirective,
+  ],
   templateUrl: './user-create.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './user-create.component.scss',
 })
 export class UserCreateComponent {
   private fb = inject(FormBuilder).nonNullable;
 
   @Output()
-  public createUser = new EventEmitter<IUser>();
+  createUser = new EventEmitter<IUser>();
 
-  public userForm = this.fb.group({
+  userForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
 
     username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
@@ -55,7 +59,7 @@ export class UserCreateComponent {
     }),
   });
 
-  public onSubmit(): void {
+  onSubmit(): void {
     if (this.userForm.invalid) {
       this.userForm.markAllAsTouched();
       return;

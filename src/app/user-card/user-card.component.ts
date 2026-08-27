@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../interfaces/user-interface';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -9,9 +9,15 @@ import { AnimatedGradientBorderDirective } from '../directives/animated-gradient
 
 @Component({
   selector: 'app-user-card',
-  imports: [CardModule,ButtonModule,UpperCasePipe,PhoneFormatPipe,BoldOnHoverDirective,AnimatedGradientBorderDirective],
+  imports: [
+    CardModule,
+    ButtonModule,
+    UpperCasePipe,
+    PhoneFormatPipe,
+    BoldOnHoverDirective,
+    AnimatedGradientBorderDirective,
+  ],
   templateUrl: './user-card.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent {

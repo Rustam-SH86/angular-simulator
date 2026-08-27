@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { MessageType } from '../enums/message.enums'
-import { Message } from '../interfaces/message.interfaces';
+import { MessageType } from '../enums/message.enums';
+import { IMessage } from '../interfaces/message.interfaces';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
-  private messagesSubject = new BehaviorSubject<Message[]>([]);
-  public messages$ = this.messagesSubject.asObservable();
+  private messagesSubject = new BehaviorSubject<IMessage[]>([]);
+  messages$ = this.messagesSubject.asObservable();
   private currentId = 0;
 
   private addMessage(type: MessageType, text: string): void {
-    const message: Message = {
+    const message: IMessage = {
       id: ++this.currentId,
       type,
       text,
@@ -26,25 +26,25 @@ export class MessageService {
     }, 5000);
   }
 
-  public closeMessage(id: number): void {
+  closeMessage(id: number): void {
     const currentMessages = this.messagesSubject.value;
     const updatedMessages = currentMessages.filter((message) => message.id !== id);
     this.messagesSubject.next(updatedMessages);
   }
 
-  public showWarn(text: string): void {
-    this.addMessage(MessageType.Warn, text);
+  showWarn(text: string): void {
+    this.addMessage(MessageType.WARN, text);
   }
 
-  public showError(text: string): void {
-    this.addMessage(MessageType.Error, text);
+  showError(text: string): void {
+    this.addMessage(MessageType.ERROR, text);
   }
 
-  public showSuccess(text: string): void {
-    this.addMessage(MessageType.Success, text);
+  showSuccess(text: string): void {
+    this.addMessage(MessageType.SUCCESS, text);
   }
 
-  public showInfo(text: string): void {
-    this.addMessage(MessageType.Info, text);
+  showInfo(text: string): void {
+    this.addMessage(MessageType.INFO, text);
   }
 }

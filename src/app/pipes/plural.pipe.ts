@@ -8,7 +8,7 @@ export class PluralPipe implements PipeTransform {
     const lastDigit = value % 10;
     const lastTwoDigits = value % 100;
 
-    if(lastTwoDigits >= 11 && lastTwoDigits <= 14){
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
       return many;
     }
     if (lastDigit === 1) {
@@ -16,7 +16,7 @@ export class PluralPipe implements PipeTransform {
     }
     if (lastDigit >= 2 && lastDigit <= 4) {
       return few;
-    } 
-      return many;
+    }
+    return many;
   }
 }

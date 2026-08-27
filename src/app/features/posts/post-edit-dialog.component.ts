@@ -18,7 +18,7 @@ export class PostEditDialogComponent {
   @Output() visibleChange = new EventEmitter<boolean>();
   @Output() save = new EventEmitter<IPost>();
 
-  public tagsText = '';
+  tagsText = '';
 
   @Input()
   set post(value: IPost | null) {

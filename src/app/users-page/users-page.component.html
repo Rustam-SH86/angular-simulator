@@ -5,19 +5,14 @@
 <div class="users-page-section">
   <h1 class="user-page-title">Список пользователей</h1>
   @if (filteredUsers$ | async; as users) {
-    <h3 class="finded-cards">Найдено {{ users.length }} 
-      {{ users.length | plural: 'карточка': 'карточки': 'карточек'}} </h3>
+    <h3 class="finded-cards">
+      Найдено {{ users.length }} {{ users.length | plural: 'карточка' : 'карточки' : 'карточек' }}
+    </h3>
   }
-  
 
   <div class="user-cards-conteiner">
     @for (user of filteredUsers$ | async; track user.id) {
-      <app-user-card
-        [user]="user"
-        (deleteUser)="deleteUser($event)"
-      ></app-user-card>
+      <app-user-card [user]="user" (deleteUser)="deleteUser($event)"></app-user-card>
     }
-
   </div>
-
 </div>

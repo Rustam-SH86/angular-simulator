@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from './services/localstorage.service';
@@ -7,7 +7,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { MessageServiceComponent } from './message-service/message-service.component';
 import { LoaderComponent } from './loader/loader.component';
-
 
 @Component({
   selector: 'app-root',
@@ -21,13 +20,12 @@ import { LoaderComponent } from './loader/loader.component';
     LoaderComponent,
   ],
   templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   protected isLoading = true;
 
-  public localstorageService: LocalStorageService = inject(LocalStorageService);
+  localstorageService: LocalStorageService = inject(LocalStorageService);
 
   constructor() {
     this.saveVisitsCountAndDate();
