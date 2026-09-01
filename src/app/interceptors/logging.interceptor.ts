@@ -1,9 +1,16 @@
 import { HttpInterceptorFn, HttpEventType } from '@angular/common/http';
 import { tap, catchError, throwError } from 'rxjs';
+import { APP_CONFIG } from '../interfaces/app-config.token.interfaces';
+import { inject } from '@angular/core';
 
 export const loggingInterceptor: HttpInterceptorFn = (req, next) => {
+  const appConfig = inject(APP_CONFIG);
   const startedAt = performance.now();
   console.log('Request', req.method, req.url);
+
+  if (!appConfig.enableLogs) {
+    return next(req);
+  }
 
   return next(req).pipe(
     tap((event) => {

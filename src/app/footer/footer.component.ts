@@ -4,6 +4,7 @@ import { faTelegram, faPinterest, faVk, faSkype } from '@fortawesome/free-brands
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { APP_CONFIG } from '../interfaces/app-config.token.interfaces';
 
 @Component({
   selector: 'app-footer',
@@ -13,6 +14,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent {
   messageService: MessageService = inject(MessageService);
+  protected readonly appConfig = inject(APP_CONFIG);
 
   protected readonly faTelegram = faTelegram;
   protected readonly faPinterest = faPinterest;

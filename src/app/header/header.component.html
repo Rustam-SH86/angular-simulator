@@ -3,26 +3,28 @@
     <img class="logo-image" src="/icons/logo.png" alt="РУМТИБЕТ" />
 
     <span class="logo-title">
-      {{ companyName }}
+      {{ appConfig.companyName }}
     </span>
   </div>
 
   <nav class="navigator">
-    @if (themeState$ | async; as state) {
-      <p-toggleswitch
-        class="toggleswitch"
-        [ngModel]="state.colorMode === 'dark'"
-        (ngModelChange)="onColorModeChange($event)"
-      ></p-toggleswitch>
+    @if (appConfig.enableTheming) {
+      @if (themeState$ | async; as state) {
+        <p-toggleswitch
+          class="toggleswitch"
+          [ngModel]="state.colorMode === 'dark'"
+          (ngModelChange)="onColorModeChange($event)"
+        ></p-toggleswitch>
 
-      <p-selectbutton
-        class="selectbutton"
-        [options]="themeOptions"
-        optionLabel="label"
-        optionValue="value"
-        [ngModel]="state.theme"
-        (ngModelChange)="onThemeChange($event)"
-      ></p-selectbutton>
+        <p-selectbutton
+          class="selectbutton"
+          [options]="themeOptions"
+          optionLabel="label"
+          optionValue="value"
+          [ngModel]="state.theme"
+          (ngModelChange)="onThemeChange($event)"
+        ></p-selectbutton>
+      }
     }
 
     <ul class="navigator-items">
@@ -49,6 +51,10 @@
       </div>
     } @else {
       <a routerLink="/login" routerLinkActive="active"> Логин </a>
+    }
+
+    @if (lastLogin$ | async; as lastLogin) {
+      <span>Last login: {{ lastLogin | date }} </span>
     }
   </nav>
 

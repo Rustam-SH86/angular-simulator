@@ -192,7 +192,7 @@
             <h2 class="travel-blog-title">{{ item.title }}</h2>
             <p class="travel-blog-text">{{ item.description }}</p>
             <div class="travel-blog-footer">
-              <p class="date">{{ item.date }}</p>
+              <p class="date">{{ item.date | date }}</p>
               <a href="" class="read-article">{{ item.readArticle }}</a>
             </div>
           </div>

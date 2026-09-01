@@ -4,10 +4,10 @@ import { MessageService } from '../services/message.service';
 import { MessageType } from '../enums/message.enums';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUsers, faShieldHalved, faTag, faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule, FontAwesomeModule],
+  imports: [FormsModule, FontAwesomeModule, DatePipe],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -62,7 +62,7 @@ export class HomePageComponent {
       title: 'Красивая Италя, какая она в реальности?',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
       readArticle: 'читать статью',
     },
     {
@@ -70,14 +70,14 @@ export class HomePageComponent {
       title: 'Долой сомнения! Весь мир открыт для вас!',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих...',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
       readArticle: 'читать статью',
     },
     {
       image: '/image/travel_blog/street.svg',
       title: 'Как подготовиться к путешествию в одиночку?',
       description: 'Для современного мира базовый вектор развития предполагает.',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
       readArticle: 'читать статью',
     },
     {
@@ -85,7 +85,7 @@ export class HomePageComponent {
       title: 'Индия ... летим?',
       description:
         'Для современного мира базовый вектор развития предполагает независимые способы реализации .',
-      date: '01/04/2023',
+      date: '2023-04-01T00:00:00',
       readArticle: 'читать статью',
     },
   ];
