@@ -5,6 +5,7 @@ import Aura from '@primeuix/themes/aura';
 import Lara from '@primeuix/themes/lara';
 import Nora from '@primeuix/themes/nora';
 import { usePreset } from '@primeuix/themes';
+import { APP_CONFIG } from '../interfaces/app-config.token.interfaces';
 
 export type AppTheme = 'aura' | 'lara' | 'nora';
 export type ColorMode = 'light' | 'dark';
@@ -29,6 +30,7 @@ const THEME_PRESETS = {
   providedIn: 'root',
 })
 export class ThemeService {
+  private readonly appConfig = inject(APP_CONFIG);
   private readonly localStorageService = inject(LocalStorageService);
   private readonly THEME_STORAGE_KEY = 'theme-state';
   private readonly themeStateSubject = new BehaviorSubject<IThemeState>(this.getInitialState());
@@ -42,6 +44,9 @@ export class ThemeService {
   }
 
   private getInitialState(): IThemeState {
+    if (!this.appConfig.enableTheming) {
+      return DEFAULT_THEME_STATE;
+    }
     const currentThemeInStorage = this.localStorageService.getValue<IThemeState>(
       this.THEME_STORAGE_KEY,
     );
@@ -53,6 +58,9 @@ export class ThemeService {
   }
 
   setTheme(theme: AppTheme): void {
+    if (!this.appConfig.enableTheming) {
+      return;
+    }
     const currentState = this.themeStateSubject.value;
 
     const newState: IThemeState = {
@@ -65,6 +73,9 @@ export class ThemeService {
   }
 
   setColorMode(colorMode: ColorMode): void {
+    if (!this.appConfig.enableTheming) {
+      return;
+    }
     const currentState = this.themeStateSubject.value;
 
     const newState: IThemeState = {

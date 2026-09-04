@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 
 import { AppTheme, ThemeService } from '../services/theme.service';
 import { AuthService } from '../features/auth/auth.service';
-
+import { APP_CONFIG } from '../interfaces/app-config.token.interfaces';
 @Component({
   selector: 'app-header',
   imports: [
@@ -17,6 +17,7 @@ import { AuthService } from '../features/auth/auth.service';
     FormsModule,
     ToggleSwitchModule,
     AsyncPipe,
+    DatePipe,
     SelectButtonModule,
   ],
   templateUrl: './header.component.html',
@@ -24,8 +25,7 @@ import { AuthService } from '../features/auth/auth.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  protected readonly companyName = 'РУМТИБЕТ';
-
+  protected readonly appConfig = inject(APP_CONFIG);
   private readonly themeService = inject(ThemeService);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
@@ -33,6 +33,8 @@ export class HeaderComponent {
   readonly themeState$ = this.themeService.themeState$;
 
   readonly currentUser$ = this.authService.currentUser$;
+
+  readonly lastLogin$ = this.authService.lastLogin$;
 
   readonly themeOptions = [
     { label: 'Aura', value: 'aura' },
