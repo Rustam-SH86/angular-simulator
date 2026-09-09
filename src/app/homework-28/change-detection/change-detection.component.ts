@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   imports: [],
   templateUrl: './change-detection.component.html',
   styleUrl: './change-detection.component.scss',
-  // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
   changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ChangeDetectionComponent implements DoCheck {
