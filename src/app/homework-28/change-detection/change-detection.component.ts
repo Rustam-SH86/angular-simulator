@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DoCheck, inject } from '@angular/core';
+import { Component, DoCheck, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
   imports: [],
   templateUrl: './change-detection.component.html',
   styleUrl: './change-detection.component.scss',
-  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class ChangeDetectionComponent implements DoCheck {
   count = 0;

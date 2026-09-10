@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-change-detection',
   imports: [],
-  templateUrl: './change-detection.component.html',
+  templateUrl: './change-detection-on-push.component.html',
   styleUrl: './change-detection.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
