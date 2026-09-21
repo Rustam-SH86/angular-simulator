@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { postResolver } from './features/posts/post.resolver';
 import { authGuard } from './features/auth/auth.guard';
 import { adminGuard } from './features/auth/admin.guard';
+import { productResolver } from './features/products/product.resolver';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,23 @@ export const routes: Routes = [
     },
     loadComponent: () =>
       import('./features/posts/post-detail.component').then((m) => m.PostDetailComponent),
+  },
+  {
+    path: 'products/:id',
+    resolve: {
+      product: productResolver,
+    },
+    loadComponent: () =>
+      import('./features/products/product-detail.component').then((m) => m.ProductDetailComponent),
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('./features/products/cart.component').then((m) => m.CartComponent),
+  },
+  {
+    path: 'products',
+    loadComponent: () =>
+      import('./features/products/products.component').then((m) => m.ProductsComponent),
   },
   {
     path: '**',
