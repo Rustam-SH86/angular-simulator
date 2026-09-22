@@ -58,6 +58,11 @@ export class HeaderComponent {
       path: 'posts',
       exact: false,
     },
+    {
+      name: 'Продукты',
+      path: 'products',
+      exact: false,
+    },
   ];
 
   onColorModeChange(checked: boolean): void {

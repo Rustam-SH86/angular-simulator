@@ -3,7 +3,6 @@ import { MessageType } from '../enums/message.enums';
 import { IMessage } from '../interfaces/message.interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { APP_CONFIG } from '../interfaces/app-config.token.interfaces';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -41,7 +40,10 @@ export class MessageService {
     this.addMessage(MessageType.WARN, text);
   }
 
-  showError(text: string): void {
+  showError(text: string, error?: unknown): void {
+    if (error !== undefined) {
+      console.error(error);
+    }
     this.addMessage(MessageType.ERROR, text);
   }
 
