@@ -1,5 +1,9 @@
 # AngularSimulator
 
+The application uses a feature-based architecture with `core`, `features`, and `shared`
+boundaries. The architectural decisions, trade-offs, and project tree are documented in
+[PR_DESCRIPTION.md](./PR_DESCRIPTION.md).
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
 
 ## Development server

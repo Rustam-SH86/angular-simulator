@@ -13,31 +13,31 @@
         "@schematics/angular:component": {
           "type": "component",
           "style": "scss",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:directive": {
           "type": "directive",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:service": {
           "type": "service",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:guard": {
           "typeSeparator": ".",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:interceptor": {
           "typeSeparator": ".",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:pipe": {
           "typeSeparator": ".",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:resolver": {
           "typeSeparator": ".",
-          "skipTests": true
+          "skipTests": false
         },
         "@schematics/angular:module": {
           "typeSeparator": "."

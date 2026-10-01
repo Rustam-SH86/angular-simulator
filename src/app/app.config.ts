@@ -17,14 +17,14 @@ import { firstValueFrom } from 'rxjs';
 
 import { routes } from './app.routes';
 
-import { loggingInterceptor } from './interceptors/logging.interceptor';
-import { serverErrorInterceptor } from './interceptors/server-error.interceptor';
-import { loaderInterceptor } from './interceptors/loader.interceptor';
+import { loggingInterceptor } from './core/http/interceptors/logging.interceptor';
+import { serverErrorInterceptor } from './core/http/interceptors/server-error.interceptor';
+import { loaderInterceptor } from './core/http/interceptors/loader.interceptor';
 
-import { authInterceptor } from './interceptors/auth.interceptor';
-import { AuthService } from './features/auth/auth.service';
+import { authInterceptor } from './core/http/interceptors/auth.interceptor';
+import { AuthFacade } from './core/auth/auth.facade';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
-import { APP_CONFIG, IAppConfig } from './interfaces/app-config.token.interfaces';
+import { APP_CONFIG, IAppConfig } from './core/config/app-config.token';
 
 const applicationConfig: IAppConfig = {
   companyName: 'РУМТИБЕТ',
@@ -72,9 +72,9 @@ export const appConfig: ApplicationConfig = {
     }),
 
     provideAppInitializer(() => {
-      const authService = inject(AuthService);
+      const authFacade = inject(AuthFacade);
 
-      return firstValueFrom(authService.initializeAuth());
+      return firstValueFrom(authFacade.initializeAuth());
     }),
   ],
 };
