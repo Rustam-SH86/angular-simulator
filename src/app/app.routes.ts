@@ -22,6 +22,18 @@ export const routes: Routes = [
   },
 
   {
+    path: 'recipes',
+    loadChildren: () =>
+      import('./features/recipes/recipes.routes').then((routes) => routes.RECIPES_ROUTES),
+  },
+
+  {
+    path: 'quotes',
+    loadChildren: () =>
+      import('./features/quotes/quotes.routes').then((routes) => routes.QUOTES_ROUTES),
+  },
+
+  {
     path: 'login',
     loadChildren: () => import('./features/auth/auth.routes').then((routes) => routes.AUTH_ROUTES),
   },

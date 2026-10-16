@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+.quotes-page {
+  max-width: 1100px;
+  padding: 24px;
+  margin-inline: auto;
+}
+
+.quotes-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.quotes-page__header h1 {
+  margin: 0 0 8px;
+}
+
+.quotes-page__statistics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.quotes-page__filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  cursor: pointer;
+  border: 1px solid #1a3e3e;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+button:hover:not(:disabled),
+button.active {
+  color: #ffffff;
+  background: #1a3e3e;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.random-quote {
+  padding: 20px;
+  margin-bottom: 24px;
+  border-left: 4px solid #1a3e3e;
+  background: #f3f5f4;
+}
+
+.random-quote h2,
+.random-quote blockquote,
+.random-quote p {
+  margin-top: 0;
+}
+
+.random-quote p {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.quotes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+}
+
+.quote-card blockquote {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+.quote-card__author {
+  margin: auto 0 16px;
+  font-weight: 700;
+}
+
+.error {
+  padding: 16px;
+  color: #c62828;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+}
+
+.error p {
+  margin-top: 0;
+}
+
+.status-message {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .quotes-page__header {
+    flex-direction: column;
+  }
+}

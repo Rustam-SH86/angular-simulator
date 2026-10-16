@@ -1,0 +1,48 @@
+<section class="recipes-page">
+  <header class="recipes-page__header">
+    <h1>Recipes</h1>
+
+    <button type="button" (click)="reloadRecipes()" [disabled]="(loading$ | async) === true">
+      Reload recipes
+    </button>
+  </header>
+
+  @if ((loading$ | async) === true) {
+    <p>Loading recipes...</p>
+  }
+
+  @if (error$ | async; as error) {
+    <p class="error">
+      {{ error }}
+    </p>
+  }
+
+  @if (recipes$ | async; as recipes) {
+    <div class="recipes-list">
+      @for (recipe of recipes; track recipe.id) {
+        <article class="recipe-card">
+          <h2>{{ recipe.name }}</h2>
+
+          <p>
+            <strong>Cuisine:</strong>
+            {{ recipe.cuisine }}
+          </p>
+
+          <p>
+            <strong>Cooking time:</strong>
+            {{ recipe.cookTimeMinutes }} minutes
+          </p>
+
+          <p>
+            <strong>Rating:</strong>
+            {{ recipe.rating }}
+          </p>
+        </article>
+      } @empty {
+        @if ((loading$ | async) === false) {
+          <p>No recipes found.</p>
+        }
+      }
+    </div>
+  }
+</section>

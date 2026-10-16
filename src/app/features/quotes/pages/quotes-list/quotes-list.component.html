@@ -1,0 +1,76 @@
+<section class="quotes-page">
+  <header class="quotes-page__header">
+    <div>
+      <h1>Quotes</h1>
+
+      <p class="quotes-page__statistics">
+        <span>Favorites: {{ quotesStore.favoritesCount() }}</span>
+        <span>Authors: {{ quotesStore.authorsCount() }}</span>
+      </p>
+    </div>
+
+    <button
+      type="button"
+      (click)="selectRandomQuote()"
+      [disabled]="quotesStore.loading() || quotesStore.quotes().length === 0"
+    >
+      Random quote
+    </button>
+  </header>
+
+  <div class="quotes-page__filters" role="group" aria-label="Quote filters">
+    <button
+      type="button"
+      [class.active]="quotesStore.filter() === 'all'"
+      [attr.aria-pressed]="quotesStore.filter() === 'all'"
+      (click)="setFilter('all')"
+    >
+      All
+    </button>
+
+    <button
+      type="button"
+      [class.active]="quotesStore.filter() === 'favorites'"
+      [attr.aria-pressed]="quotesStore.filter() === 'favorites'"
+      (click)="setFilter('favorites')"
+    >
+      Favorites
+    </button>
+  </div>
+
+  @if (quotesStore.randomQuote(); as randomQuote) {
+    <aside class="random-quote" aria-live="polite">
+      <h2>Random quote</h2>
+      <blockquote>{{ randomQuote.quote }}</blockquote>
+      <p>— {{ randomQuote.author }}</p>
+    </aside>
+  }
+
+  @if (quotesStore.loading()) {
+    <p class="status-message">Loading quotes...</p>
+  } @else if (quotesStore.error(); as error) {
+    <div class="error" role="alert">
+      <p>{{ error }}</p>
+      <button type="button" (click)="retry()">Retry</button>
+    </div>
+  } @else {
+    <div class="quotes-list">
+      @for (quote of quotesStore.filteredQuotes(); track quote.id) {
+        <article class="quote-card">
+          <blockquote>{{ quote.quote }}</blockquote>
+          <p class="quote-card__author">— {{ quote.author }}</p>
+
+          <button type="button" (click)="toggleFavorite(quote)">
+            {{ quotesStore.isFavorite(quote.id) ? 'Remove from favorites' : 'Add to favorites' }}
+          </button>
+        </article>
+      } @empty {
+        <p class="status-message">
+          {{
+            quotesStore.filter() === 'favorites' ? 'No favorite quotes yet.' : 'No quotes found.'
+          }}
+        </p>
+      }
+    </div>
+  }
+</section>
